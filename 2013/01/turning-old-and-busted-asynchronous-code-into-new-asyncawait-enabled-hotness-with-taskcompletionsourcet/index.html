@@ -1,0 +1,576 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="While working with a client to create a new version of their software, one of the tasks was creating a service that talked to a hardware laser tracker, a device which allows tracking certain points (t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Turning old and busted asynchronous code into new async/await-enabled hotness with TaskCompletionSource<T>">
+<meta property="og:url" content="http://hmemcpy.com/2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="While working with a client to create a new version of their software, one of the tasks was creating a service that talked to a hardware laser tracker, a device which allows tracking certain points (t">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Turning old and busted asynchronous code into new async/await-enabled hotness with TaskCompletionSource<T>">
+<meta name="twitter:description" content="While working with a client to create a new version of their software, one of the tasks was creating a service that talked to a hardware laser tracker, a device which allows tracking certain points (t">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/"/>
+
+  <title> Turning old and busted asynchronous code into new async/await-enabled hotness with TaskCompletionSource<T> | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Turning old and busted asynchronous code into new async/await-enabled hotness with TaskCompletionSource<T>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2013-01-30T20:38:36+00:00" content="2013-01-30">
+              2013-01-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2013-01-30-turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>While working with a client to create a new version of their software, one of the tasks was creating a service that talked to a hardware laser tracker, a device which allows tracking certain points (<em>targets</em>) over a large distance.</p>
+<a id="more"></a>
+<p>The API provided by the manufacturer was not ideal, to say the least. The API consisted of a managed wrapper over two classes, we’ll call them Request and Response, providing asynchronous request and callback operations. For each operation on the Request object, a corresponding Answer operation would arrive asynchronously on the Response object, e.g. if a <code>GetPosition</code> method was called on Request, sometime later an <code>OnGetPositionAnswer</code> method would arrive on the Response object, containing the relevant information.</p>
+<p>One of the requirements was to be able to wait for several of such callbacks to arrive, before doing another operation. Several options were considered, among them <a href="http://www.introtorx.com/" target="_blank" rel="external">Reactive Extensions (Rx)</a> and <a href="http://msdn.microsoft.com/en-us/devlabs/gg585582.aspx" target="_blank" rel="external">TPL Dataflow</a>. In the end, I chose an approach based on the <a href="http://msdn.microsoft.com/en-us/library/dd449174.aspx" target="_blank" rel="external"><code>TaskCompletionSource&lt;T&gt;</code></a> class (part of the TPL), which I describe below.</p>
+<p>Having exposed a .NET event in the Response object for each of the callbacks we were interested in, I defined a following method, returning a <code>Task&lt;T&gt;</code>, where <code>T</code> was the object that contained the data I required:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Task&lt;PositionData&gt; <span class="title">GetPositionAsync</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> tcs = TaskCompletionSourc&lt;PositionData&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// subscribe to the callback before firing the request</span></div><div class="line">    _response.GetPositionAnswer += (sender, args) =&amp;gt;</div><div class="line">    &#123;</div><div class="line">        PositionData data = ... <span class="comment">// translate position data from the event's arguments</span></div><div class="line">	</div><div class="line">        tcs.SetResult(data);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">// perform the actual operation (method is asynchronous, returns immediately)</span></div><div class="line">    _request.GetPosition();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> tcs.Task;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>And it worked great! The caller of <code>GetPositionAsync</code> now had a task which he can either <code>await</code> (if using .NET 4.5, or in .NET 4.0 using Async Targeting Pack (now known as <a href="http://nuget.org/packages/Microsoft.Bcl.Async" target="_blank" rel="external">Microsoft.Bcl.Async</a>), but only if running in Visual Studio 2012), or using plain old methods, available on the Task object.</p>
+<p>However, upon calling this method a second time, an <code>InvalidOperationException</code> <strong><em>An attempt was made to transition a task to a final state when it had already completed.</em></strong> was thrown on the <code>tcs.SetResult(data)</code> line. It took me a second to realize the bug, can you see it?</p>
+<p>The problem occurred because the event handler was not unsubscribed from, after the task had completed! Since the handler is a lambda expression, it captured the variable <code>tcs</code> when it was created. When we called <code>GetPositionAsync()</code> the second time, we made another subscription to the event handler, but when it fired, the first subscription was handled first, attempting to set the result of the <strong>first</strong> <code>TaskCompletionSource</code> instance, which had, of course, already finished.</p>
+<p>Unsubscribing from an anonymous method (or a lambda expression) is possible, but not very pretty. It requires a small abuse of the C# syntax, to have the handler stored in a local variable, then subscribed and unsubscribed from. After a bit of tweaking, this was the end result, solving the problem:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Task&lt;PositionData&gt; <span class="title">GetPositionAsync</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> tcs = <span class="keyword">new</span> TaskCompletionSource&lt;PositionData&gt;();</div><div class="line">   </div><div class="line">    <span class="comment">// Declare and initialize a local variable of type EventHandler to null</span></div><div class="line">    <span class="comment">// This is needed to use the variable inside the lambda expression body</span></div><div class="line">    EventHandler handler = <span class="literal">null</span>;</div><div class="line">    handler += (sender, args) =&gt; </div><div class="line">    &#123;</div><div class="line">        PositionData data = ... <span class="comment">// get the data from event args</span></div><div class="line">        </div><div class="line">        tcs.SetResult(data);</div><div class="line">        </div><div class="line">        <span class="comment">// unsubscribe from the event handler when task is complete</span></div><div class="line">        _response.GetPositionAnswer -= handler;</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    <span class="comment">// subscribe to the event handler before executing the operation</span></div><div class="line">    _response.GetPositionAnswer += handler;</div><div class="line">    </div><div class="line">    _request.GetPosition();</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> tcs.Task;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>It’s not very pretty, but it does the job. If anyone has a better suggestion, please leave a comment!</p>
+<p>Until next time, happy asyncing!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/12/running-multithreaded-unit-tests-with-fakeiteasy/" rel="next" title="Running multithreaded unit tests with FakeItEasy">
+                <i class="fa fa-chevron-left"></i> Running multithreaded unit tests with FakeItEasy
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/02/preventing-resharpers-implicitly-captured-closure-warning-in-fakeiteasy-unit-tests/" rel="prev" title="Preventing ReSharper's 'implicitly captured closure' warning in FakeItEasy unit tests">
+                Preventing ReSharper's 'implicitly captured closure' warning in FakeItEasy unit tests <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/';
+      var disqus_title = "Turning old and busted asynchronous code into new async/await-enabled hotness with TaskCompletionSource<T>";
+      var disqus_url = 'http://hmemcpy.com/2013/01/turning-old-and-busted-asynchronous-code-into-new-asyncawait-enabled-hotness-with-taskcompletionsourcet/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Let’s get this out of the way first: this is not a post about how to use Nancy &amp;ndash; there are lots of blog posts out there, written by people far better at it than me!
+I am not a web developer. Dur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Nancy made .NET Web development fun!">
+<meta property="og:url" content="http://hmemcpy.com/2014/03/how-nancy-made-net-web-development-fun/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="Let’s get this out of the way first: this is not a post about how to use Nancy &amp;ndash; there are lots of blog posts out there, written by people far better at it than me!
+I am not a web developer. Dur">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How Nancy made .NET Web development fun!">
+<meta name="twitter:description" content="Let’s get this out of the way first: this is not a post about how to use Nancy &amp;ndash; there are lots of blog posts out there, written by people far better at it than me!
+I am not a web developer. Dur">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2014/03/how-nancy-made-net-web-development-fun/"/>
+
+  <title> How Nancy made .NET Web development fun! | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                How Nancy made .NET Web development fun!
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-03-17T13:35:48+00:00" content="2014-03-17">
+              2014-03-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/how-nancy-made-net-web-development-fun/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/how-nancy-made-net-web-development-fun/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2014-03-17-how-nancy-made-net-web-development-fun.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Let’s get this out of the way first: this is <strong>not</strong> a post about how to use <a href="http://nancyfx.org/" target="_blank" rel="external">Nancy</a> &ndash; there are lots of blog posts out there, written by people far better at it than me!</p>
+<p>I am not a web developer. During my career I mostly worked on desktop applications (with occasional dab in the database land, typical CRUD stuff). Over the years my passion for development shifted towards building development tools (Visual Studio, ReSharper plugins), and my dayjob now having a blast building <a href="http://www.oz-code.com/" target="_blank" rel="external">OzCode</a>, a debugging productivity tool for Visual Studio.</p>
+<a id="more"></a>
+<p>So I never had the chance to <em>do</em> web development. Every time I tried to do it, I gave up quickly, because I could never get the hang of it! I don’t know JavaScript, and ASP.NET (even MVC and even Web API) make a lot of assumptions about how to structure and build web apps. Same goes for other web frameworks and languages &ndash; they’re all great(!), but just not for me. Anything I ever tried to build, I quickly gave up (due to being stuck, or otherwise losing interest).</p>
+<p>Enter Nancy.</p>
+<p>When I first heard about Nancy, I was intrigued &ndash; an entire web application that fits in a tweet! If, in a highly unlikely event, you’re reading about Nancy for the first time in this blog post, here’s the canonical <em>hello world</em> app:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">public class SampleModule : Nancy.NancyModule</div><div class="line">&#123;</div><div class="line">    public SampleModule()</div><div class="line">    &#123;</div><div class="line">        Get["/"] = _ =&gt; "Hello World!";</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>And with <a href="http://scriptcs.net/" target="_blank" rel="external">ScriptCS</a> being the hot new thing, hosting Nancy apps <a href="https://github.com/adamralph/scriptcs-nancy" target="_blank" rel="external">does not even require Visual Studio</a>!</p>
+<p>So what makes Nancy so appealing to me, a non-web developer? First and foremost &ndash; the people behind it! Nancy is a perfect example of the Open Source spirit &ndash; with <a href="http://nancyfx.org/contribs.html" target="_blank" rel="external">more than 160 contributors</a>, making it a fun, well-documented, well-tested, accessible framework for everyone and everything!</p>
+<p>But what I like most about Nancy has nothing to do with its actual application &ndash; it has to do with the way it works under the covers. Demonstrated by one of Nancy’s lead developers, Andreas Håkansson (<a href="https://twitter.com/TheCodeJunkie" target="_blank" rel="external">@TheCodeJunkie</a> on twitter), in the <a href="https://www.youtube.com/watch?v=7jg0u-YaRxQ" target="_blank" rel="external">Guerilla Framework Design</a> talk at DevDay, Nancy uses lots of cool C# language hacks to achieve simplicity and make using of the framework as simple as possible!</p>
+<p>Want examples? Let’s start with the <em>hello world</em> app above: there are at least 3 cool things that don’t require you to understand exactly how they work. For example, the funky <code>= _ =&gt;</code> <em>smiley face</em>. While aesthetically pleasing, this is a lambda expression, defining the body of the HTTP Get method, with the route <em>/</em>. This lambda passes a parameter which is a dynamic dictionary (specified by underscore in the above example). This dictionary contains, among other things, the URL parameters, so they can be used immediately inside the method body, e.g.:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Get[<span class="string">"/greet/&#123;name&#125;"</span>] = parameters =&gt; <span class="string">"Hello "</span> + parameters.name;</div></pre></td></tr></table></figure>
+<p>Here, the underscore has been replaced with the named argument <code>parameters</code>, and now, everyone who issues an HTTP GET to the address /greet/Igal, for example, the value <em>Igal</em> will be captured in the parameter <code>name</code> in the dynamic dictionary, and will just be there, available to use!</p>
+<p>Another thing to note is that the lambda returns a string, but it somehow renders fine in the browser. The <code>Get</code> property (along with other HTTP verbs that Nancy provides) expects a <code>Func&lt;dynamic, dynamic&gt;</code> as a return result of the lambda, so it doesn’t really matter. The conversion is taken care under the hood of Nancy, which defines a lot of <a href="http://msdn.microsoft.com/en-us/library/z5z9kes2.aspx" target="_blank" rel="external">implicit conversions</a> to covert strings to valid response content, and integers to valid HTTP codes! This means that you can simply <em><code>return 404;</code></em> from a body of a Nancy route, and it will auto-magically transform into <code>HttpStatusCode.NotFound</code> that Nancy understands.</p>
+<p>Everything in Nancy is expandable, configurable and overridable. Nancy is built with testability, extensibility and pluggability in mind, which means that almost everything you need it to do (support another View engine, hosting platform, custom IoC container, etc.) is just a NuGet package away. Which is just awesome, as there are <a href="https://www.nuget.org/packages?q=nancy" target="_blank" rel="external">tons of things</a> you can add to Nancy.</p>
+<p>Finally, no post of mine can be complete without mentioning tooling. I love productivity addins, and I believe there should be a tool for anything! This is why I created <a href="https://github.com/hmemcpy/Nancy.ReSharper" target="_blank" rel="external">a plugin for ReSharper</a>, bringing some of ReSharper’s goodness to Nancy! It adds support to navigating and creating to Views, code completion and other validations. Everything that was until now available only in ASP.NET MVC (with ReSharper’s help), is now also available for Nancy!</p>
+<p>In conclusion, if you’re dabbling in web development, you should definitely give Nancy a try! It’s the only framework that made someone like me, a complete web development noob, be productive and actually create something useful!</p>
+<p>Happy hacking!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/03/installing-vsix-extension-via-msi-without-devenv-setup/" rel="next" title="Installing a .vsix Extension via MSI without "devenv /setup"">
+                <i class="fa fa-chevron-left"></i> Installing a .vsix Extension via MSI without "devenv /setup"
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/04/roslyn-its-got-electrolytes/" rel="prev" title="Roslyn! It's got Electrolytes!">
+                Roslyn! It's got Electrolytes! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2014/03/how-nancy-made-net-web-development-fun/';
+      var disqus_title = "How Nancy made .NET Web development fun!";
+      var disqus_url = 'http://hmemcpy.com/2014/03/how-nancy-made-net-web-development-fun/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

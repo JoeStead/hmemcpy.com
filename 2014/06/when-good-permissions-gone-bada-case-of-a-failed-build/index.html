@@ -1,0 +1,585 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="I was called over to see if I could help solve a strange issue &amp;ndash; every time the build script (Ant) for the client’s Android app ran &amp;ndash; certain files that were modified by the build script (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When good permissions gone bad - a case of a failed build">
+<meta property="og:url" content="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="I was called over to see if I could help solve a strange issue &amp;ndash; every time the build script (Ant) for the client’s Android app ran &amp;ndash; certain files that were modified by the build script (">
+<meta property="og:image" content="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image1.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image2.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image3.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="When good permissions gone bad - a case of a failed build">
+<meta name="twitter:description" content="I was called over to see if I could help solve a strange issue &amp;ndash; every time the build script (Ant) for the client’s Android app ran &amp;ndash; certain files that were modified by the build script (">
+<meta name="twitter:image" content="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/"/>
+
+  <title> When good permissions gone bad - a case of a failed build | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                When good permissions gone bad - a case of a failed build
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-06-09T13:08:08+00:00" content="2014-06-09">
+              2014-06-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2014-06-09-when-good-permissions-gone-bada-case-of-a-failed-build.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I was called over to see if I could help solve a strange issue &ndash; every time the build script (Ant) for the client’s Android app ran &ndash; certain files that were modified by the build script (a <code>.properties</code> file, few others), were suddenly inaccessible to other people logging to the machine &ndash; only the user who initiated the build could still write to the files. Looking at the file permissions tab proved as much: only the current user and the Administrators group could access the file!</p>
+<a id="more"></a>
+<p>My initial investigation into Ant’s build.xml led me to an interesting discovery &ndash; all the files that lost their permissions were modified using the <a href="http://ant.apache.org/manual/Tasks/replaceregexp.html" target="_blank" rel="external">ReplaceRegExp</a> task for Ant &ndash; a task that could replace text in a file using regular expressions. Quick Google search for <em>replaceregexp ant file permissions</em> led me to <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=36440" target="_blank" rel="external">this similar issue</a>, which was, unfortunately, closed as wontfix.</p>
+<p>I decided to investigate for myself. Using my go-to tool for this task, <a href="http://technet.microsoft.com/en-us/sysinternals/bb896645.aspx" target="_blank" rel="external">Process Monitor</a>, I decided to trace all activity of <strong>java.exe</strong> (which runs the Ant tasks), looking for anything that has to do with setting permissions or writing the file, filtering just the file I was interested in (<strong>project.properties</strong>). After running the specific Ant task that did a simple regex replace in the file, it was indeed changed, and its permissions were changed as well.</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image1.png" alt="image1.png" title="">
+<p>However, looking at the File Summary window of Process Monitor (Tools &ndash; File Summary), I saw that not only there were no new ACL permissions set (Set ACL was called 0 times), no actual bytes were written!</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image2.png" alt="image2.png" title="">
+<p>So how was it possible that the file was modified, but nothing was written? Looking back at the events in Process Monitor I also could not see any calls to WriteFile.</p>
+<p>Feeling confused, I then started looking for anything that could appear relevant, until one entry in particular caught my eye: a call to <strong>SetDispositionInformationFile</strong> with a flag <strong>Delete: True</strong>.</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image3.png" alt="image3.png" title="">
+<p>I checked who was calling this API from the Stack tab of this event’s properties, and saw that it was a call to <strong>deleteFile</strong>, originating in <strong>java.dll</strong>. This confirmed my suspicion that the file was not written directly at all &ndash; but <em>replaced</em> with another file, possibly from a temp directory.</p>
+<p>My suspicions proved to be correct &ndash; looking at the <a href="http://svn.apache.org/repos/asf/ant/core/trunk/src/main/org/apache/tools/ant/taskdefs/optional/ReplaceRegExp.java" target="_blank" rel="external">source code</a> for ReplaceRegExp task I saw that it was exactly how it did it: by using</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">FILE_UTILS.createTempFile(<span class="string">"replace"</span>, <span class="string">".txt"</span>, <span class="keyword">null</span>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<p>to create a temporary file, and then later renaming that temporary file with the original file name!</p>
+<p><code>FILE_UTILS</code> turned out to be just a wrapper calling Java’s <a href="http://www.tutorialspoint.com/java/io/file_createtempfile_directory.htm" target="_blank" rel="external"><code>File.createTempFile</code></a>. The 3<sup>rd</sup> argument, which was <code>null</code> in this case, tells <code>createTempFile</code> where to create the file. If <code>null</code> is passed, it will use the default <code>%TEMP%</code> environment variable.</p>
+<p>Which ended up explaining the problem exactly &ndash; by default, it uses the local user’s <code>%TEMP%</code> directory to create the temp file that replaces the original one. The default per-user <code>%TEMP%</code> directory located in the <code>%LOCALAPPDATA%</code> directory of the user’s profile &ndash; meaning only the current user (and local Administrators) can access it! This means, that any file created in this directory will inherit the same permissions! In our case, ReplaceRegExp’s implementation caused the per-user temp file to overwrite the file that was in a public folder, causing it to lose all permissions!</p>
+<p>A quick workaround for the problem was to set the TEMP directory to <code>c:\temp</code>, temporarily, during the build.</p>
+<p>Next time your Ant script causes issues with file permissions &ndash; make sure your files are not replaced under your nose.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/" rel="next" title="How to enable login verifications on Twitter from "unsuppored" countries">
+                <i class="fa fa-chevron-left"></i> How to enable login verifications on Twitter from "unsuppored" countries
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/migrating-from-tfs-to-git-to-visual-studio-online-the-survival-guide/" rel="prev" title="Migrating from TFS to git to Visual Studio Online - the survival guide">
+                Migrating from TFS to git to Visual Studio Online - the survival guide <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/';
+      var disqus_title = "When good permissions gone bad - a case of a failed build";
+      var disqus_url = 'http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="It’s time to upgrade your favorite IDE! In this post I will list some of my favorite &amp;#8220;off-the-beaten-path&amp;#8221; extensions for Visual Studio that make my daily tasks much easier. I will not lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7 open-source Visual Studio Extensions to make your life easier">
+<meta property="og:url" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="It’s time to upgrade your favorite IDE! In this post I will list some of my favorite &amp;#8220;off-the-beaten-path&amp;#8221; extensions for Visual Studio that make my daily tasks much easier. I will not lis">
+<meta property="og:image" content="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot4.png">
+<meta property="og:image" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/git_diff_margin.png">
+<meta property="og:image" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png">
+<meta property="og:image" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png">
+<meta property="og:image" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs1.png">
+<meta property="og:image" content="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs2.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.561Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 open-source Visual Studio Extensions to make your life easier">
+<meta name="twitter:description" content="It’s time to upgrade your favorite IDE! In this post I will list some of my favorite &amp;#8220;off-the-beaten-path&amp;#8221; extensions for Visual Studio that make my daily tasks much easier. I will not lis">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/"/>
+
+  <title> 7 open-source Visual Studio Extensions to make your life easier | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                7 open-source Visual Studio Extensions to make your life easier
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-10-28T20:15:19+00:00" content="2015-10-28">
+              2015-10-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2015-10-28-7-open-source-visual-studio-extensions-to-make-your-life-easier.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>It’s time to upgrade your <em>favorite</em> IDE! In this post I will list some of my favorite &#8220;off-the-beaten-path&#8221; extensions for Visual Studio that make my daily tasks much easier. I will not list the obvious ones, such as <a href="https://www.jetbrains.com/resharper/" target="_blank" rel="external">ReSharper</a> and <a href="http://www.oz-code.com/" target="_blank" rel="external">OzCode</a> (or even <a href="http://vswebessentials.com/" target="_blank" rel="external">Web Essentials</a>), but rather few relatively unknown ones that do some very cool things.</p>
+<p>Are you ready? Let’s begin!</p>
+<a id="more"></a>
+<h1 id="BuildVision"><a href="#BuildVision" class="headerlink" title="BuildVision"></a>BuildVision</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/23d3c821-ca2d-4e1a-a005-4f70f12f77ba" target="_blank" rel="external">BuildVision</a> (<a href="https://github.com/nagits/BuildVision" target="_blank" rel="external">source</a>) is an extension that visualizes your build process:</p>
+<p><img src="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot1.png" alt=""></p>
+<p>This little extension shows you the status of your build process, how long it took, and most importantly, errors (if any), that occurred during the build. What’s nice about this, is the errors are grouped under each project, so it’s much easier to navigate than going through a flat list in the Errors output:</p>
+<p><img src="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot4.png" alt=""></p>
+<h1 id="Git-Diff-Margin"><a href="#Git-Diff-Margin" class="headerlink" title="Git Diff Margin"></a>Git Diff Margin</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/cf49cf30-2ca6-4ea0-b7cc-6a8e0dadc1a8" target="_blank" rel="external">GitDiffMargin</a> (<a href="https://github.com/laurentkempe/GitDiffMargin" target="_blank" rel="external">source</a>) adds a margin on the left column (or the scroll bar, if you prefer) of the Visual Studio editor, and shows you the diffs between your changed/deleted lines, allowing you to navigate and revert quickly to the previous change!</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/git_diff_margin.png" alt="Git Diff Margin" title="Git Diff Margin">
+<p>It’s a perfect companion to git projects (so, all of them!), and it works very nicely with the Visual Studio Git Provider, if you use it. </p>
+<p>Which brings me to:</p>
+<h1 id="NoGit"><a href="#NoGit" class="headerlink" title="NoGit"></a>NoGit</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/146b404a-3c91-46ff-932a-fb0f8b826f94" target="_blank" rel="external">NoGit</a> (<a href="https://github.com/markrendle/nogit" target="_blank" rel="external">source</a>) does one thing and one thing only &ndash; it <strong>disables</strong> the built-in Visual Studio Git source-control provider, which has a habit of re-enabling itself whenever you open a solution that uses git. NoGit will turn off this provider always, whenever a solution is opened.</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png" alt="NoGit" title="NoGit">
+<h1 id="Reopen-Start-Page"><a href="#Reopen-Start-Page" class="headerlink" title="Reopen Start Page"></a>Reopen Start Page</h1><p>Another time saver is <a href="https://visualstudiogallery.msdn.microsoft.com/e64380ab-e3aa-4ac7-aa11-95719c5c91e9" target="_blank" rel="external">Reopen Start Page</a> (<a href="https://github.com/jlattimer/VSReopenStartPage" target="_blank" rel="external">source</a>), which does exactly what it says &ndash; reopens the Visual Studio Start page when you close a solution. Personally, I make use of the recent solutions list on the Start page, which makes it really convenient to open recent solutions!</p>
+<h1 id="SaveAllTheTime"><a href="#SaveAllTheTime" class="headerlink" title="SaveAllTheTime"></a>SaveAllTheTime</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/ee676c7f-83e8-4ef8-87ab-22a95ae8f1d4" target="_blank" rel="external">SaveAllTheTime</a> (<a href="https://github.com/paulcbetts/SaveAllTheTime" target="_blank" rel="external">source</a>) is another gem that makes Visual Studio to save changed files and projects ALL THE TIME. Visual Studio sometimes doesn’t save project files when you rename or move files around. SaveAllTheTime makes sure everything is saved before you commit your changes!</p>
+<p>In addition, SaveAllTheTime contains a small widget, reminding you to commit often. If you’re a git power user, or don’t use git(ಠ_ಠ), you can disable this widget.</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png" alt="Save All The Time" title="Save All The Time">
+<h1 id="TabSanity"><a href="#TabSanity" class="headerlink" title="TabSanity"></a>TabSanity</h1><p>I discovered <a href="https://visualstudiogallery.msdn.microsoft.com/ac4d4d6b-b017-4a42-8f72-55f0ffe850d7" target="_blank" rel="external">TabSanity</a> (<a href="https://github.com/jedmao/tabsanity-vs" target="_blank" rel="external">source</a>) fairly recently, and it was one of those <em>where has this been all my life!!1</em> moments. This extension makes tabs-as-spaces behaves like actual tabs! The backspace and delete keys, arrow key navigation will not allow the caret to land within the spaces that form a tab, and it will skip to the next <em>tab</em>, saving you keystrokes!</p>
+<h1 id="EmojiVS"><a href="#EmojiVS" class="headerlink" title="EmojiVS"></a>EmojiVS</h1><p>Finally, let’s add some fun to our code with <a href="https://visualstudiogallery.msdn.microsoft.com/88575465-8486-4c5a-8406-05e8d1d5b09d" target="_blank" rel="external">EmojiVS</a> (<a href="https://github.com/jbevain/EmojiVS" target="_blank" rel="external">source</a>) &ndash; an extension that adds github emojis to your code (more specifically, code comments). Because, why not?</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs1.png" alt="EmojiVS" title="EmojiVS">
+<p>And it even gives you IntelliSense:</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs2.png" alt="EmojiVS in Action" title="EmojiVS in Action">
+<p>Note: if you’re a ReSharper user, you need to install the <a href="https://github.com/hmemcpy/ReSharper.ReMoji" target="_blank" rel="external">ReMoji</a> extension <em>in addition to</em> EmojiVS to get code completion.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/preventing-a-certain-windows-update-from-installing-on-windows-10/" rel="next" title="Preventing a certain Windows Update from installing on Windows 10">
+                <i class="fa fa-chevron-left"></i> Preventing a certain Windows Update from installing on Windows 10
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/" rel="prev" title="Review: my new HP Spectre x360 2-in-1 convertible laptop">
+                Review: my new HP Spectre x360 2-in-1 convertible laptop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/';
+      var disqus_title = "7 open-source Visual Studio Extensions to make your life easier";
+      var disqus_url = 'http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

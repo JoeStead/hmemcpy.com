@@ -1,0 +1,591 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10">
+<meta property="og:url" content="http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can">
+<meta property="og:image" content="http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/powershell.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10">
+<meta name="twitter:description" content="I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can">
+<meta name="twitter:image" content="http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/powershell.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/"/>
+
+  <title> SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10 | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-01-12T16:19:35+00:00" content="2016-01-12">
+              2016-01-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2016-01-12-solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can serve as a general troubleshooting step when google searches lead you nowhere.</p>
+<a id="more"></a>
+<blockquote><p>in my particualr case, (temporary) enabling the Administrator user (after running <code>sfc /scannow</code> in an elevated prompt, followed by <code>net user administrator /active:yes</code>) allowed the update to install successfully! After installing and rebooting the machine, I disabled the built-in Administrator account using <code>net user administrator /active:no</code> from an elevated prompt.</p>
+<footer><strong>TL;DR</strong></footer></blockquote>
+<p>/verbose</p>
+<p>After failing to install the update, from both Windows Update and manually downloading it, I turned to the web, trying to find solutions. Most of the forums describing the problem were either abandoned, or given the basic generic troubleshooting tips, which are rarely useful (all they tell you there’s a problem, as if you didn’t know).</p>
+<p>One of those <em>tips</em> is running <a href="https://support.microsoft.com/en-us/kb/929833" target="_blank" rel="external">sfc /scannow</a>. The result of running this check is a (sometimes huge) log file called CBS.log, located in </p>
+<pre><code>%WinDir%\Logs\CBS\CBS.log
+</code></pre><p>This log file will also be created as part of the standard system file checking done by installing Windows Updates.</p>
+<p>What I did was, after my computer failed to install, and rolled back the installation again, was open this log file in Notepad++, then searching for entries with <strong>Error</strong>. Surprisingly, I saw a few lines that looked like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-01-11 20:17:42, Info   CSI    00000046 Loading user account SID [l:92&#123;46&#125;]&quot;S-1-5-21-3692211415-2751783221-3488552363-1001&quot;</div><div class="line">2016-01-11 20:17:42, Info   CSI    00000046 Loading user account SID [l:92&#123;46&#125;]&quot;S-1-5-21-3692211415-2751783221-3488552363-500&quot;</div><div class="line">2016-01-11 20:17:42, Error  CSI    00000048@2016/1/11:20:17:42.338 (F) base\wcp\rtllib\inc\auto_hive.h(105): Error STATUS_OBJECT_PATH_NOT_FOUND originated in function Windows::Rtl::AutoHive::Load expression: (null) [gle=0x80004005]</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>So it seems that it was trying to load a user account with SID ending in <code>-500</code>, and failed. Googling for the error text led me to <a href="https://answers.microsoft.com/en-us/insider/forum/insider_wintp-insider_update/latest-kb3074665-update-fails-to-install/45f314d1-2ea8-452c-b59f-60440b9f4e46?page=3" target="_blank" rel="external">this post</a> on the Microsoft forums, describing a similar problem. A little down on page 3, someone suggested running a PowerShell command, dumping all the user SIDs to the console:</p>
+<pre><code>get-wmiobject -class &quot;win32_account&quot; -namespace &quot;root\cimv2&quot; | sort caption | format-table caption, FullName, SID
+</code></pre><p>Which led me to see that the problematic SID belonged to the Administrator user! On Windows 10 machines, the Administrator account is disabled by default, and this is why I suspected the update was trying to install itself into the Administrator user’s hive, but couldn’t find it.</p>
+<img src="/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/powershell.png" alt="Listing output in PowerShell" title="Listing output in PowerShell">
+<p>I’ve enabled the Administrator account using a net user command:</p>
+<pre><code>net user Administrator /active:yes
+</code></pre><p>And tried installing the update again. To my surprise, it installed successfully and didn’t roll back!</p>
+<p>After rebooting, I verified the update was listed in Windows Updates’ history, and disabled the Administrator account again.</p>
+<p>If your updates failing to install:</p>
+<ul>
+<li>run <code>sfc /scannow</code></li>
+<li>check CBS.log</li>
+<li>hope for the best!</li>
+</ul>
+<p>Good luck!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/" rel="next" title="Review: my new HP Spectre x360 2-in-1 convertible laptop">
+                <i class="fa fa-chevron-left"></i> Review: my new HP Spectre x360 2-in-1 convertible laptop
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/getting-with-the-times-migrating-from-wordpress-to-github-pages-with-hexo/" rel="prev" title="Getting with the times: migrating from WordPress to GitHub Pages with Hexo">
+                Getting with the times: migrating from WordPress to GitHub Pages with Hexo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/';
+      var disqus_title = "SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10";
+      var disqus_url = 'http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

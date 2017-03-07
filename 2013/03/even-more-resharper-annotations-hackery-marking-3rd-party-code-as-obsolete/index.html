@@ -1,0 +1,582 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="As part of transitioning to a new API, I wanted a way to mark the old API as obsolete, so that Visual Studio (or ReSharper) would flag using of the old API as an error.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Even more ReSharper Annotations hackery: marking 3rd party code as obsolete">
+<meta property="og:url" content="http://hmemcpy.com/2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="As part of transitioning to a new API, I wanted a way to mark the old API as obsolete, so that Visual Studio (or ReSharper) would flag using of the old API as an error.">
+<meta property="og:image" content="http://i1.wp.com/hmemcpy.com/wp-content/uploads/2013/03/image6.png?resize=624%2C69">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Even more ReSharper Annotations hackery: marking 3rd party code as obsolete">
+<meta name="twitter:description" content="As part of transitioning to a new API, I wanted a way to mark the old API as obsolete, so that Visual Studio (or ReSharper) would flag using of the old API as an error.">
+<meta name="twitter:image" content="http://i1.wp.com/hmemcpy.com/wp-content/uploads/2013/03/image6.png?resize=624%2C69">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/"/>
+
+  <title> Even more ReSharper Annotations hackery: marking 3rd party code as obsolete | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Even more ReSharper Annotations hackery: marking 3rd party code as obsolete
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2013-03-24T21:16:14+00:00" content="2013-03-24">
+              2013-03-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2013-03-24-even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>As part of transitioning to a new API, I wanted a way to mark the old API as obsolete, so that Visual Studio (or ReSharper) would flag using of the old API as an error.</p>
+<a id="more"></a>
+<p>Normally, the <a href="http://msdn.microsoft.com/en-us/library/system.obsoleteattribute.aspx" target="_blank" rel="external"><code>ObsoleteAttribute</code></a> does exactly that &ndash; marks certain methods or types as obsolete, and has a constructor overload to specify whether the usage will be treated as an error or not. Unfortunately, in my case there was no source code for the old API (it was used as a 3<sup>rd</sup>-party DLL), and there’s no way to apply the Obsolete attribute to external DLLs without modifying the assembly using IL-rewriting tools.</p>
+<p>It had occurred to me that perhaps this would be possible to achieve using one of <a href="http://www.jetbrains.com/resharper/webhelp/Code_Analysis__External_Annotations.html" target="_blank" rel="external">ReSharper’s External Annotations</a>, but there are no built-in annotations for this kind of task. The annotations mechanism is used to decorate various .NET types and methods with special attributes that provide ReSharper with additional information. Turns out, it is possible to use the same mechanism to apply the Obsolete attribute as well! This way, ReSharper could mark the usage as an error, even if it’s not really a compilation error (which is good enough for me!).</p>
+<p>I <a href="http://hmemcpy.com/2013/02/preventing-resharpers-implicitly-captured-closure-warning-in-fakeiteasy-unit-tests/">previously wrote</a> about how to add external annotations using XML files. According to ReSharper’s documentation, external annotation XMLs can be placed in one of the following locations:</p>
+<ul>
+<li><code>[ReSharper install directory]\Bin\ExternalAnnotations\[Assembly name].xml</code> </li>
+<li><code>[ReSharper install directory]\Bin\ExternalAnnotations\[Assembly name]\[Any name].xml</code>, where <code>[Assembly name]</code> is the assembly name without the version </li>
+<li>Alongside the assembly, named <code>[Assembly name].ExternalAnnotations.xml</code></li>
+</ul>
+<p>Since the old assembly was under my control, I chose the 3<sup>rd</sup> option, to place the annotations XML next to the assembly, and in the source control. This way, every team member that uses ReSharper will have this annotation enabled by simply updating to the latest source.</p>
+<p>The external annotations XMLs are the same format as <a href="http://msdn.microsoft.com/en-us/library/fsbx0t7x.aspx" target="_blank" rel="external">XML documentation</a> files, generated by Visual Studio when you build your assembly. Supposing our assembly name is <strong><code>Acme.OldServiceBusImpl.dll</code></strong>, and the type we want to make obsolete is called <strong><code>EventBus</code></strong>, we need to create a file called <strong><code>Acme.OldServiceBusImpl.ExternalAnnotations.xml</code></strong>, and place it beside the DLL. The file has the following content:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">assembly</span> <span class="attr">name</span>=<span class="string">"Acme.OldEventBusImpl"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">member</span> <span class="attr">name</span>=<span class="string">"T:Acme.OldEventBusImpl.EventBus"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attribute</span> <span class="attr">ctor</span>=<span class="string">"M:System.ObsoleteAttribute.#ctor(System.String,System.Boolean)"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">argument</span>&gt;</span>Use Acme.NewServiceBusImpl.ServiceBus instead.<span class="tag">&lt;/<span class="name">argument</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">argument</span>&gt;</span>true<span class="tag">&lt;/<span class="name">argument</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">attribute</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">member</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>This specifies that for an assembly named <code>Acme.OldServiceBusImpl</code>, having a type <code>Acme.OldEventBusImpl.EventBus</code>, add an attribute instance of <code>ObsoleteAttribute</code> with the constructor overload <a href="http://msdn.microsoft.com/en-us/library/961hff5d.aspx" target="_blank" rel="external"><code>ObsoleteAttribute(string, bool)</code></a>, the boolean indicating the usage is considered an error.</p>
+<p>After adding the XML file and reloading your project, ReSharper will now mark the usage of this type as an error! Your code will still compile, but <a href="http://www.youtube.com/watch?v=j-n_yxJqYi0" target="_blank" rel="external">you’ll get red on you</a>!</p>
+<p><img title="" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="" src="http://i1.wp.com/hmemcpy.com/wp-content/uploads/2013/03/image6.png?resize=624%2C69" data-recalc-dims="1"></p>
+<p>Happy hacking!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/02/more-fun-with-resharper-annotations-in-asp-net-mvc/" rel="next" title="More fun with ReSharper annotations in ASP.NET MVC!">
+                <i class="fa fa-chevron-left"></i> More fun with ReSharper annotations in ASP.NET MVC!
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/04/first-rule-of-unit-testing-dont-do-it-yet/" rel="prev" title="First Rule of Unit Testing: Don't do it! (yet)">
+                First Rule of Unit Testing: Don't do it! (yet) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/';
+      var disqus_title = "Even more ReSharper Annotations hackery: marking 3rd party code as obsolete";
+      var disqus_url = 'http://hmemcpy.com/2013/03/even-more-resharper-annotations-hackery-marking-3rd-party-code-as-obsolete/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

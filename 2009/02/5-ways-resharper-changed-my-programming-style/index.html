@@ -1,0 +1,601 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="I love ReSharper. It has completely changed the way I think about code. When I have to use Visual Studio without ReSharper installed, I feel like I’m writing the code in Notepad. As my first actual po">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5 ways ReSharper changed my programming style">
+<meta property="og:url" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="I love ReSharper. It has completely changed the way I think about code. When I have to use Visual Studio without ReSharper installed, I feel like I’m writing the code in Notepad. As my first actual po">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image1.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image2.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image3.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image4.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image5.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image6.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image7.png">
+<meta property="og:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image8.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 ways ReSharper changed my programming style">
+<meta name="twitter:description" content="I love ReSharper. It has completely changed the way I think about code. When I have to use Visual Studio without ReSharper installed, I feel like I’m writing the code in Notepad. As my first actual po">
+<meta name="twitter:image" content="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/image.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/"/>
+
+  <title> 5 ways ReSharper changed my programming style | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                5 ways ReSharper changed my programming style
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2009-02-05T10:35:38+00:00" content="2009-02-05">
+              2009-02-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2009/02/5-ways-resharper-changed-my-programming-style/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2009/02/5-ways-resharper-changed-my-programming-style/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2009-02-05-5-ways-resharper-changed-my-programming-style.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I love <a href="http://www.jetbrains.com/resharper/" target="_blank" rel="external">ReSharper</a>. It has completely changed the way I think about code. When I have to use Visual Studio without ReSharper installed, I feel like I’m writing the code in Notepad. As my first actual post on this blog I’d like to present a <em>few</em> features of ReSharper 4.1 that help me code faster, better, (stronger) and with much higher accuracy.</p>
+<a id="more"></a>
+<p>Here are a few things I <em>don’t</em> do anymore:</p>
+<p><strong>1. Look for files in Solution Explorer</strong></p>
+<p>Gone are the days when I have to take my hands off the keyboard to use the mouse to find a file deep in the Solution Explorer. If I have to find a type, I use <strong>Go To Type</strong> (Ctrl-<strong>T</strong> [Visual Studio] or Ctrl-<strong>N</strong> [IntelliJ]):<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image.png" alt="image.png" title=""></p>
+<p>Usually that’s enough, since I almost always know the type name I’m looking for, otherwise I’d look for the file itself using <strong>Go To File</strong> (Ctrl-Shift-<strong>T</strong> [Visual Studio] or Ctrl-Shift-<strong>N</strong> [IntelliJ]):<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image1.png" alt="image1.png" title=""></p>
+<p>Another great feature of those options is acronym support. For example, I can quickly navigate to <strong>WebDavMethodLogger</strong> class by typing <strong>WDML</strong> (if the type name is Pascal Cased), or <strong>wdml</strong> in lowercase:<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image2.png" alt="image2.png" title=""></p>
+<p>More interesting Go To navigations: <strong>Go To Symbol</strong> (Alt-Shift-T [Visual Studio] or Ctrl-Alt-Shift-<strong>N</strong> [IntelliJ]), <strong>Go To Member</strong> (Alt- [Visual Studio] or Ctrl-<strong>F12</strong> [IntelliJ]).</p>
+<p><strong>2. Manually create constructors, fields, properties</strong></p>
+<p>Meet one of my best friends &ndash; <strong>Generate</strong> (Alt-Insert). Pressing this shortcut anywhere in the file will popup this menu:<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image3.png" alt="image3.png" title=""></p>
+<p>If I select <strong>Constructor</strong> from the menu, I’ll get a dialog in which I’ll be able to specify constructor parameters, and automatically map them into local fields.</p>
+<p>Let’s say you’ve made an empty class <em>Person</em>, and manually typed out the following:<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image4.png" alt="image4.png" title=""></p>
+<p>Notice two things here: the parameter names <strong>name</strong> and <strong>lastName</strong> are grayed out. It means that they are not (yet) used anywhere in our class. Also, notice the red bulb on the left side? That is my other best friend &#8211; the <strong>Action</strong> (Alt-Enter) key. Pressing Alt-Enter when will give this menu:</p>
+<img src="/2009/02/5-ways-resharper-changed-my-programming-style/image5.png" alt="image5.png" title="">
+<p>Few keystrokes later, and I have the following code:</p>
+<img src="/2009/02/5-ways-resharper-changed-my-programming-style/image6.png" alt="image6.png" title="">
+<p>The Action key presents contextual actions, such as removing unused methods, split/join variable declarations, turn string concatenations into <strong>string.Format, </strong>where they are applicable, and many more.</p>
+<p><strong>3. Rebuild the solution to find errors/making sure the code compiles</strong></p>
+<p>I wonder how many years have been spent watching the code trying to compile, only to get a nice list of errors with different reasons why it can’t. ReSharper provides visual cues to things that are wrong with your code:<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image7.png" alt="image7.png" title=""></p>
+<p>Notice the little red lines on the scroll bar (on the left). These are compilation errors in the code. ReSharper analyzes the code as you type, and displays errors immediately. You can hover above them with the mouse, and the hint will show what’s wrong. To navigate to the error, click with the mouse, or better use the <strong>Go To Next Error</strong> (Shift-Alt-PgUp/PgDown [Visual Studio] or Alt-<strong>F12</strong>/Shift-Alt-<strong>F12</strong> [IntelliJ]) key.</p>
+<p>The red circle in the status bar shows total files with errors in the entire solution. If this is turned on (disabled by default in new solutions), the same shortcut will navigate to the errors in the entire solution.</p>
+<p>Other visual clues are Word-like squiggly lines under the used to describe other miscellaneous errors, warnings and suggestions.</p>
+<p><strong>4. Use text search/find references to navigate interfaces and abstract class implementations</strong></p>
+<p>One of the most useful features that ReSharper provides is navigation to implementers from base classes, and vice-versa. By using <strong>Navigate from Here to</strong> (Alt-`) I get a popup which allows to quickly navigate to all implementations:<br><img src="/2009/02/5-ways-resharper-changed-my-programming-style/image8.png" alt="image8.png" title=""></p>
+<p>I can also go to the definition of the type by performing <strong>Ctrl-Left click</strong>, or pressing <strong>F12</strong> [Visual Studio] or Ctrl-<strong>B</strong> [IntelliJ] on the type name in the code.</p>
+<p><strong>5. Move code around by select/drag-drop or copy/paste</strong></p>
+<p>Sometimes I need to re-arrange methods within the class. Instead of selecting the code with the mouse and then cut/paste it, I use <strong>Move code Up/Down</strong> (Ctrl-Shift-Alt-Up/Down) when my caret is on on the method name. Same shortcut works when trying to move code lines within the method. If I need to select some portions of my method, I use <strong>Extend selection</strong> (Ctrl-W) which selects just the parts of the code I need. If I select too much, I can use <strong>Shrink selection</strong> (Ctrl-Shift-W).</p>
+<p>This is a very small subset of features that make ReSharper. It’s a wonderful addition that makes my job much easier. Sure, it takes time to get used to and configure properly, but once it’s configured to suit all your need, you’ll never want to continue writing code without it.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2009/02/console-writeline-hello-world/" rel="next" title="Console.WriteLine("Hello World!");">
+                <i class="fa fa-chevron-left"></i> Console.WriteLine("Hello World!");
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2009/02/awesome-tip-copy-text-from-any-messagebox-to-clipboard/" rel="prev" title="Awesome tip: Copy text from any Message Box to Clipboard">
+                Awesome tip: Copy text from any Message Box to Clipboard <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2009/02/5-ways-resharper-changed-my-programming-style/';
+      var disqus_title = "5 ways ReSharper changed my programming style";
+      var disqus_url = 'http://hmemcpy.com/2009/02/5-ways-resharper-changed-my-programming-style/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="I just got my brand new HP EliteBook 8570w. I was looking for a new development machine for a while, and after long consideration decided on this custom build of the Ivy Bridge-based EliteBook. Here a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Installing Windows 8 on HP EliteBook 8570w">
+<meta property="og:url" content="http://hmemcpy.com/2012/09/installing-windows-8-on-hp-elitebook-8570w/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="I just got my brand new HP EliteBook 8570w. I was looking for a new development machine for a while, and after long consideration decided on this custom build of the Ivy Bridge-based EliteBook. Here a">
+<meta property="og:image" content="http://www.www8-hp.com/in/en/images/8770w_hero_tcm_188_1453363.jpg">
+<meta property="og:image" content="http://i.imgur.com/yhR3osh.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Installing Windows 8 on HP EliteBook 8570w">
+<meta name="twitter:description" content="I just got my brand new HP EliteBook 8570w. I was looking for a new development machine for a while, and after long consideration decided on this custom build of the Ivy Bridge-based EliteBook. Here a">
+<meta name="twitter:image" content="http://www.www8-hp.com/in/en/images/8770w_hero_tcm_188_1453363.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2012/09/installing-windows-8-on-hp-elitebook-8570w/"/>
+
+  <title> Installing Windows 8 on HP EliteBook 8570w | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Installing Windows 8 on HP EliteBook 8570w
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2012-09-30T09:37:29+00:00" content="2012-09-30">
+              2012-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2012/09/installing-windows-8-on-hp-elitebook-8570w/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/installing-windows-8-on-hp-elitebook-8570w/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2012-09-30-installing-windows-8-on-hp-elitebook-8570w.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img style="float: right; padding: 5px;" width="200" src="http://www.www8-hp.com/in/en/images/8770w_hero_tcm_188_1453363.jpg">I just got my brand new <a href="http://www.hp.com/united-states/campaigns/workstations/8570w_features.html" target="_blank" rel="external">HP EliteBook 8570w</a>. I was looking for a new development machine for a while, and after long consideration decided on this custom build of the Ivy Bridge-based EliteBook. Here are the (important) specs:</p>
+<a id="more"></a>
+<ul>
+<li>HP EliteBook 8570w 15.6*</li>
+<li>i7-3820QM</li>
+<li>16GB RAM 1600MHz DDR3</li>
+<li>256GB SSD + 512GB HDD (instead of optical drive)</li>
+</ul>
+<p>Unfortunately, like many branded laptops, it came bundled with tons of*¦ software, which I preferred not having installed. That being said, I decided to finally give Windows 8 a try, and install it on this machine.</p>
+<p><strong>DISCLAIMERS AND WARNINGS:</strong> At the time of writing (Sept. 30, 2012), Windows 8 was not officially supported by HP. Modifying system partitions and installing unsupported Operating Systems and/or drivers might void your warranty! Proceed at your own risk!</p>
+<p>The following is a recap of the steps I performed to upgrade my machine to Windows 8. Your configuration (and, therefore, experience) might be different.</p>
+<h2 id="STEP-0-ndash-PREPARATION"><a href="#STEP-0-ndash-PREPARATION" class="headerlink" title="STEP 0 &ndash; PREPARATION"></a>STEP 0 &ndash; PREPARATION</h2><p>I have always preferred having two partitions, C: and D:, having all my source code, utilities, music and other things on the D: partition, so if I reformat my computer (which used to happen fairly often), I would keep all my data. Since I now had two physical drives, I decided to have the SSD as my primary (system) drive, and the HDD as the storage.</p>
+<p>On HP machines, all the pre-installed software and drivers are located in the directory <strong>swsetup</strong>, located on the C: drive. I copied this directory to the D: drive. Next, I proceeded to <strong>create an image</strong> of the current system. HP machines come with a special partition that contain the recovery image (which restores the system to store-bought state). I usually <em>delete</em> the recovery partition, since a) it takes 30GB off the primary storage (which in my case is an SSD, and 30GB is a lot of space for an SSD) and b) it defeats the purpose of the reinstall, since the preloaded software is still there.</p>
+<h2 id="STEP-1-ndash-INSTALLATION"><a href="#STEP-1-ndash-INSTALLATION" class="headerlink" title="STEP 1 &ndash; INSTALLATION"></a>STEP 1 &ndash; INSTALLATION</h2><p>After backing up the existing system, and copying the <strong>swsetup</strong> directory, I proceeded to install Windows 8. Since my new machine doesn’t have an optical drive, I used the Windows USB Tool to create a bootable Windows 8 USB stick. I rebooted the machine, pressed Esc during the startup. In the boot menu, I selected F10 for boot order, and selected my USB drive.</p>
+<p>In the setup, I selected Custom to make a clean install of the OS, then in the partition selection I <strong>deleted</strong> all the partitions from <strong>Disk 0</strong> &ndash; <em>System Reserved, HP Tools and HP Recovery</em> partitions were all deleted, as well as the OS partition. What remained was the now-unallocated space of Disk 0 and the existing Disk 1 (which is the 2<sup>nd</sup> physical drive). I proceeded to select the unallocated space of Disk 0, and Windows 8 did the rest.</p>
+<h2 id="STEP-3-ndash-DRIVERS-AND-CONFIGURATION"><a href="#STEP-3-ndash-DRIVERS-AND-CONFIGURATION" class="headerlink" title="STEP 3 &ndash; DRIVERS AND CONFIGURATION"></a>STEP 3 &ndash; DRIVERS AND CONFIGURATION</h2><p>After (surprisingly smooth) Windows 8 installation, I proceeded to go to the Device Manager. Compared to a clean Windows 7 install, almost every device driver was automatically installed by Windows 8.</p>
+<p>First things I noticed that the trackpad was not working. Like many Windows laptops, HP too comes with the Synaptics tracpkad, and although the driver was seemed to be installed by Windows 8, the trackpad didn’t register any mouse movements. I installed the drivers from <strong>swsetup\Trackpad</strong>, and the problem was solved!</p>
+<p>N.B. The software and driver directories in swsetup are cryptically named. Fortunately, most of them contain a file with a .CVA extension. This is a plain-text file (you can open it with Notepad), it will tell you the complete software title (and description) of the files in the directory. You could use this information to rename the directories to something that makes more sense (I did).</p>
+<p><img src="http://i.imgur.com/yhR3osh.png" alt=""></p>
+<p>Looking at the device manager, there are 4 unknown devices. I right-clicked on each of them, choosing Update Driver, and pointed the system to look at <strong>swsetup</strong> and its subdirectories. The setup quickly found the missing devices, all except one: an Unknown Device.</p>
+<p>Double-clicking on the device revealed its ID, so a quick Google check revealed it was something called <em>Validity Sensors</em>, which turned out to be the fingerprint reader on my machine. There was a Validity Fingerprint Driver in the swsetup folder, and after installing it I didn’t have any more yellow question marks!</p>
+<h2 id="STEP-4-ndash-MORE-STUFF-AND-FINAL-WORDS"><a href="#STEP-4-ndash-MORE-STUFF-AND-FINAL-WORDS" class="headerlink" title="STEP 4 &ndash; MORE STUFF AND FINAL WORDS"></a>STEP 4 &ndash; MORE STUFF AND FINAL WORDS</h2><p>Until HP releases Windows 8-compatible versions of their tools, I chose not to install the ProtectTools suite (for drive encryption/enhanced security log-on). I also didn’t install any of the Intel and HP drivers, since Windows 8 picked most of them up. I did, however, install the <strong>IDT HD Audio Driver</strong>, for enhanced audio capabilities and the mute button support.</p>
+<p>I expect HP to release Windows 8 compatible drivers soon, however it shouldn’t stop you from upgrading to Windows 8 today!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/09/boot-to-desktop-in-windows-8-an-in-depth-analysis/" rel="next" title="Boot to desktop in Windows 8: An in-depth analysis">
+                <i class="fa fa-chevron-left"></i> Boot to desktop in Windows 8: An in-depth analysis
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2012/10/fixing-a-failed-scheduled-task-the-operator-or-administrator-has-refused-the-request-0x800710e0/" rel="prev" title="Fixing a failed scheduled task: The operator or administrator has refused the request 0x800710E0">
+                Fixing a failed scheduled task: The operator or administrator has refused the request 0x800710E0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2012/09/installing-windows-8-on-hp-elitebook-8570w/';
+      var disqus_title = "Installing Windows 8 on HP EliteBook 8570w";
+      var disqus_url = 'http://hmemcpy.com/2012/09/installing-windows-8-on-hp-elitebook-8570w/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

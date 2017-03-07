@@ -1,0 +1,587 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Yesterday, JetBrains announced the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expression enhancements in ReSharper 9">
+<meta property="og:url" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="Yesterday, JetBrains announced the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetB">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex1.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex2.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex3.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex4.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex5.png">
+<meta property="og:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex6.png">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Regular Expression enhancements in ReSharper 9">
+<meta name="twitter:description" content="Yesterday, JetBrains announced the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetB">
+<meta name="twitter:image" content="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/regex1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/"/>
+
+  <title> Regular Expression enhancements in ReSharper 9 | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Regular Expression enhancements in ReSharper 9
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-10-15T23:03:45+00:00" content="2014-10-16">
+              2014-10-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/regular-expression-enhancements-in-resharper-9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/10/regular-expression-enhancements-in-resharper-9/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2014-10-16-regular-expression-enhancements-in-resharper-9.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Yesterday, JetBrains <a href="http://blog.jetbrains.com/dotnet/2014/10/13/introducing-the-resharper-9-early-access-program/" target="_blank" rel="external">announced</a> the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetBrains to the punch, and let you know about one incredible feature (which I consider a <em>killer feature</em> of ReSharper 9). I am talking about the improvements in dealing with Regular Expressions (Regex)!</p>
+<a id="more"></a>
+<p><strong>Update:</strong> read all about the new <a href="http://blog.jetbrains.com/dotnet/2014/10/27/regular-expression-support-in-resharper-9/" target="_blank" rel="external">Regex support in all its glory on the JetBrains blog</a>!</p>
+<p>There were always 2 ways to write regular expressions in C# code &ndash; either inside one of the methods of Regex class, e.g. <code>Regex.IsMatch</code>, or defining a string literal as a constant, and using it in a Regex class later.</p>
+<p>ReSharper 9 has <strong>Syntax Highlighting</strong> and <strong>Code Completion</strong> for regex literals! When you start typing a regex into a Regex class, you’ll see a list of suggestions, which is being narrowed down as you type:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex1.png" alt="Code Completion" title="Code Completion">
+<p>There’s also a special syntax highlighting for the complete regex &ndash; as well as automatic checking for errors:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex2.png" alt="Syntax Highlighting" title="Syntax Highlighting">
+<p>However, the <em>killer feature</em> is the ability to validate and test the regular expressions straight from Visual Studio! Pressing Alt-Enter anywhere inside the expression will bring the Quick Actions menu, with a new option to <strong>Validate regular expression</strong>:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex3.png" alt="Regex validation menu" title="Regex validation menu">
+<p>Which opens a new window that lets you input some text to validate your regular expression!</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex4.png" alt="Regex validatior" title="Regex validatior">
+<p>But the best part of these new enhancements is the ability to transform <strong>any string literal</strong> into a regular expression! Simply press Alt-Enter inside the string literal, and select <strong>Make regular expression here</strong>:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex5.png" alt="Turn into regex" title="Turn into regex">
+<p>Will turn into:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex6.png" alt="With syntax highlighting" title="With syntax highlighting">
+<p>And you get all the regex features (validation, intellisense, etc) inside your regex string literals! Amazing!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/" rel="next" title="Debug symbols, dotPeek and long paths in Visual Studio">
+                <i class="fa fa-chevron-left"></i> Debug symbols, dotPeek and long paths in Visual Studio
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/10/my-top-3-favorite-windows-productivity-tools/" rel="prev" title="My top 3 favorite Windows productivity tools!">
+                My top 3 favorite Windows productivity tools! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2014/10/regular-expression-enhancements-in-resharper-9/';
+      var disqus_title = "Regular Expression enhancements in ReSharper 9";
+      var disqus_url = 'http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

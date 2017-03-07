@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>In Absentia</title>
+  <subtitle>by Igal Tabachnik</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://hmemcpy.com/"/>
+  <updated>2017-03-07T10:55:26.596Z</updated>
+  <id>http://hmemcpy.com/</id>
+  
+  <author>
+    <name>Igal Tabachnik</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Enough!</title>
+    <link href="http://hmemcpy.com/2017/03/Enough/"/>
+    <id>http://hmemcpy.com/2017/03/Enough/</id>
+    <published>2017-03-07T10:52:52.000Z</published>
+    <updated>2017-03-07T10:55:26.596Z</updated>
+    
+    <content type="html"><![CDATA[<p>Layered architectures were good, util they weren’t. Someone said ORMs, and we were tearing out our SQL statements in favor of magic.</p>
+<p>ORMs were good, until they weren’t. You couldn’t use the generated entities in your presentation layers, because they knew too much. Someone said DTOs.</p>
+<p>DTOs were good, until they weren’t. You now had an explosion of Entities and their matching DTOs. Someone said model-mapping.</p>
+<p>Model-mapping was good, until it wasn’t. It was too cumbersome to manually translate properties. Someone said convention-based auto-mapping.</p>
+<p>Auto-mapping was good, until it wasn’t. Conventions grew large and cumbersome. ORMs got bloated. Someone Repository Pattern.</p>
+<p>Repository Pattern was good, until it wasn’t. We created abstractions for abstractions (ORMs). An <a href="http://cleancoder.com" target="_blank" rel="external">elderly relative</a> said SOLID and TDD.</p>
+<p>SOLID was good, until it wasn’t. We got so afraid of having components talk to each other directly, we created yet more layers of indirection between them. Someone said dependency injection containers.</p>
+<p>DI containers were good, until they weren’t. It was so easy to wire-up dependencies, we didn’t care about where they came from. But containers needed interfaces to work properly, so for every Dependency we automatically created a corresponding IDependency. Our projects now take 6 minutes to build, all the refactoring tools break, since they don’t know where class instances are instantiated. <a href="https://hmemcpy.github.io/AgentMulder/" target="_blank" rel="external">More tools</a> are required to handle magic.</p>
+<p>TDD was good, until it wasn’t. With all those interfaces around, we needed something to help us “isolate” our “units” (whatever that means). Someone said Mocking frameworks…</p>
+<hr>
+<p> We make fun of the JavaScript people for their left-pads and npm-induced hell, but what about us? We have only ourselves to blame for this OO insanity we have created.</p>
+<p> No wonder so many people are seeking refuge elsewhere.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Layered architectures were good, util they weren’t. Someone said ORMs, and we were tearing out our SQL statements in favor of magic.&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Wanted: a maintainer for Agent Mulder (and other ReSharper plugins)</title>
+    <link href="http://hmemcpy.com/2016/08/wanted-a-maintainer-for-agent-mulder-and-other-resharper-plugins/"/>
+    <id>http://hmemcpy.com/2016/08/wanted-a-maintainer-for-agent-mulder-and-other-resharper-plugins/</id>
+    <published>2016-08-09T08:12:01.000Z</published>
+    <updated>2017-03-07T10:55:26.596Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sometime in 2011, I’ve seen a cool feature of <a href="https://github.com/castleproject/Windsor/" target="_blank" rel="external">Castle Windsor IoC container</a> - the ability to create <a href="https://github.com/castleproject/Windsor/blob/master/docs/typed-factory-facility-interface-based.md" target="_blank" rel="external">typed factories based on an interface</a>, without any implementation. That day I realized 2 things: a) containers are magic, and b) such magic would never be allowed in production.</p>
+<a id="more"></a>
+<p>An idea was formed in my mind: what if my <a href="https://www.jetbrains.com/resharper/" target="_blank" rel="external">favorite IDE extension</a> could visualize types that are created in such magical ways, by the IoC/DI frameworks? If it were less magical, perhaps it could be used more. And thus, <a href="https://github.com/hmemcpy/AgentMulder" target="_blank" rel="external">Agent Mulder plugin for ReSharper</a> was born - it analyzes container registration code in your solution, and provides navigation to and finding usages of types registered or resolved via those containers.</p>
+<p>Here’s an old demo of it in action:<br><div class="video-container"><iframe src="//player.vimeo.com/video/41113265" frameborder="0" allowfullscreen></iframe></div></p>
+<p>It was a great experience to write, and even greater experience to have Agent Mulder be one of the most popular ReSharper plugins of all time.</p>
+<h2 id="I-need-your-help"><a href="#I-need-your-help" class="headerlink" title="I need your help"></a>I need your help</h2><p>It’s 2016, and <a href="http://www.michaelbromley.co.uk/blog/529/why-i-havent-fixed-your-issue-yet" target="_blank" rel="external">I haven’t fixed your issue yet</a>. It’s not that I don’t want to, but… I don’t want it to die either. Writing and maintaining plugins for ReSharper is not an easy task, but not impossible either.</p>
+<p>I’m looking for YOU to take over <a href="https://resharper-plugins.jetbrains.com/profiles/hmemcpy/" target="_blank" rel="external">my ReSharper plugins</a> (Agent Mulder, Xao, InternalsVisibleTo Helper, and others), and keep them safe! If you’re interested, please drop me a line on twitter, comments, email.</p>
+<p>Whoever you are, I’ll make sure to walk you through the mess.</p>
+<p>Thank you!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sometime in 2011, I’ve seen a cool feature of &lt;a href=&quot;https://github.com/castleproject/Windsor/&quot;&gt;Castle Windsor IoC container&lt;/a&gt; - the ability to create &lt;a href=&quot;https://github.com/castleproject/Windsor/blob/master/docs/typed-factory-facility-interface-based.md&quot;&gt;typed factories based on an interface&lt;/a&gt;, without any implementation. That day I realized 2 things: a) containers are magic, and b) such magic would never be allowed in production.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac survival guide for the Windows lifer</title>
+    <link href="http://hmemcpy.com/2016/06/mac-survival-guide-for-the-windows-lifer/"/>
+    <id>http://hmemcpy.com/2016/06/mac-survival-guide-for-the-windows-lifer/</id>
+    <published>2016-06-22T08:45:51.000Z</published>
+    <updated>2017-03-07T10:55:26.581Z</updated>
+    
+    <content type="html"><![CDATA[<p>I recently started a <a href="http://wix.engineering/" target="_blank" rel="external">shiny new job</a>, and got a shiny new Macbook Pro to go with it. Having spent most of my personal and professional life on Windows, I knew that an adjustment period would have to follow. Below are my impressions, the good, bad, and the ugly side of adjusting to One Cupertino Way after a lifetime on Windows.<br><a id="more"></a></p>
+<p>One of my biggest concerns before the big switch were actually keyboard-related. I’m a Windows Power User&trade; (don’t laugh!), and do most of the things with keyboard shortcuts. I have my favorite Windows <a href="/2014/10/my-top-3-favorite-windows-productivity-tools/">productivity tools</a> and <a href="https://conemu.github.io/" target="_blank" rel="external">terminal replacements</a> bound to specific shortcuts, which I use every day. I would have to re-learn many shortcuts, which I consider to be the worst part of the whole experience. I made it a special effort not to remap any of the default Mac keys, so I could learn to use any Mac (of which there are plenty here).</p>
+<p>Before embarking on my new adventure, I had <a href="https://twitter.com/hmemcpy/status/739831978359463937" target="_blank" rel="external">asked on twitter</a> for survival tips, and am very thankful to everyone who contributed!</p>
+<p>Here are the tips in no particular order, which made my initial experience much more “familiar”:</p>
+<h3 id="Brew"><a href="#Brew" class="headerlink" title="Brew"></a>Brew</h3><p><a href="http://brew.sh/" target="_blank" rel="external">Brew</a> (short for Homebrew) is like <a href="https://chocolatey.org/" target="_blank" rel="external">Chocolatey</a> for Mac! Brew is a package manager which lets you install things from the command line. A more correct comparison would be: <code>brew cask</code> is to Mac what <code>choco</code> is to Windows: <a href="https://caskroom.github.io/" target="_blank" rel="external">Cask</a> is an extension of Brew that lets you install applications, while plain <code>brew</code> is for installing from source.</p>
+<h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p><img style="float: left; padding: 5px;" width="250" src="/2016/06/mac-survival-guide-for-the-windows-lifer/image1.png">Speaking of command line, I knew from before that Macs have a vastly superior shell experience, but I had to enable it first, by installing a few things: <a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2</a>, a terminal replacement for OS X, and using <code>zsh</code> instead of <code>Bash</code>, by way of <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">Oh My Zsh</a> setup. Not having any specific preference, that’s what I’ve done, and I’ve very happy for it!</p>
+<p>Specific tips: Solarized Dark theme for iTerm2, and <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="external">agnoster</a> theme for Oh My Zsh, and a patched font to go with it, if you don’t see the status icons.</p>
+<p>In addition, I have installed <a href="https://github.com/wting/autojump" target="_blank" rel="external">Autojump</a> via brew, (which was the inspiration for my favorite PowerShell tool <a href="https://github.com/tkellogg/Jump-Location" target="_blank" rel="external">Jump-Location</a>), and enabled it in Oh my Zsh using the <code>autojump</code> plugin (edit <code>~/.zshrc</code> to add it to the <code>plugins</code> entry, e.g.:)</p>
+<pre><code>plugins=(git zsh-autosuggestions autojump)
+</code></pre><h3 id="Productivity"><a href="#Productivity" class="headerlink" title="Productivity"></a>Productivity</h3><p><img style="float: right; padding: 5px;" width="250" src="/2016/06/mac-survival-guide-for-the-windows-lifer/image2.jpg">Right off the bat, I was advised to buy <a href="https://www.alfredapp.com/" target="_blank" rel="external">Alfred</a> a productivity tool for the Mac, which combines a launcher with a powerful search. I ended up buying it within the first 20 minutes because of the Clipboard History feature (which is a paid “Powerpack” addon). On Windows, I cannot live without my beloved <a href="http://ditto-cp.sourceforge.net/" target="_blank" rel="external">Ditto</a> clipboard manager, and Alfred offered a great alternative. Buying Alfred opens up additional possibilities via Workflows, which I’ll mention later. </p>
+<h3 id="Keyboard"><a href="#Keyboard" class="headerlink" title="Keyboard"></a>Keyboard</h3><p><img style="float: left; padding: 5px;" width="250" src="/2016/06/mac-survival-guide-for-the-windows-lifer/image3.jpg">I love my ergonomic Microsoft Natural 4000 keyboard, and I refuse to type on anything else (which includes the keyboard on the Mac itself). Between the choice of the very thin and very painful-looking Apple Keyboard and Magic Mouse and a Microsoft Sculpt keyboard (with a Sculpt Ergonomic mouse), choosing my setup was a no-brainer.</p>
+<p>The problem, of course, is that Mac uses a different keyboard layout than Windows, specifically it has the &#x2318; (Command/Cmd) key, which is used for most things Ctrl is used in Windows. To overcome this mismatch (and remain consistent with the default keyboard layout on the Mac), I used an excellent util called <a href="https://github.com/tekezo/Karabiner" target="_blank" rel="external">Karabiner</a>, which is a keyboard remapping on steroids.</p>
+<p>On the Mac, the rightmost control keys are: <code>Control</code>, <code>Option</code> and <code>Command</code>. To match the Mac layout, I mapped the <code>Windows</code> key to <code>Option</code>, and <code>Alt</code> to <code>Command</code> using the following Karabiner settings file:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">...</div><div class="line">  <span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Left ALT to COMMAND_L and vice versa<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.left_alt_to_command_l<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L<span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L<span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>And some other tweaks. For the full listing, see <a href="https://gist.github.com/hmemcpy/4e8e3eb73e3a5bf49939a457786f8a7e" target="_blank" rel="external">this gist</a>. To import it, go to Karabiner preferences, to the <strong>Misc &amp; Uninstall</strong> tab, then in the <strong>Custom Settings</strong> press <strong>Open private.xml</strong>, and save the XML in that file. Finally, go to the <strong>Change Key</strong> tab and select the new custom settings you want to enable.</p>
+<p><strong>Update:</strong> looks like this is also possible to do without Karabiner, by adjusting the Modifier Keys in the Keyboard settings. In addition, this lets you select the specific keyboard you want to adjust (instead of having two separate profiles for Karabiner). Big thanks to Michael Martz for his <a href="#comment-2744578673">comment below</a>!<br><img src="/2016/06/mac-survival-guide-for-the-windows-lifer/image5.png" alt="image5.png" title=""></p>
+<h3 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots"></a>Screenshots</h3><p>There are a few ways to <a href="https://support.apple.com/en-us/HT201361" target="_blank" rel="external">take a screenshot</a> on a Mac, most involve pressing several keys together. I found a nicer way to do this using an <a href="http://www.alfredforum.com/topic/902-take-quick-screenshots-using-the-screencapture-workflow/" target="_blank" rel="external">Alfred Workflow</a>, which allows quickly launchig the screen capture tool from Alfred:<br><img src="/2016/06/mac-survival-guide-for-the-windows-lifer/image4.png" alt="image4.png" title=""></p>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><p>Other things I found useful/annoying when working on a Mac:</p>
+<ul>
+<li><p><strong>Installing Applications</strong> is the #1 difference between Windows and Mac - other than Brew mentioned earlier, the “standard” way to install applications on a Mac is simply dragging its icon to the Applications folder in Finder (Mac’s “Explorer”). To remove the application, drag it to the trash can! Applications on the Mac are self-contained, no installers/uninstallers required.</p>
+</li>
+<li><p><strong>Minimizing</strong> does not work the same as Windows: if you minimize the active window, it will shrink itself with a “Genie effect” next to the trash can, and won’t be restored with <code>Command+Tab</code>! (equivalent of Alt+Tab on Windows). To make tabbing work like Windows, <strong>Hide</strong> (<code>Command+H</code>) the active windows instead. <code>Command+Q</code> quits the application. (thanks to <a href="https://twitter.com/JasonImison/status/739835159659307010" target="_blank" rel="external">Jason Imison</a> for the tips!)</p>
+</li>
+<li><p><strong>Selecting text</strong> behaves differently on a Mac: pressing <code>Command+Left/Right</code> jumps to the beginning/end of the line (holding <code>Shift</code> will select the text). To jump to the next/previous word, use <code>Option+Left/Right</code> instead (note: this doesn’t seem to work in iTerm2 by default, it has to be <a href="https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x" target="_blank" rel="external">configured to enable it</a>.)</p>
+</li>
+<li><p><strong>Other shortcut keys</strong> which are different between Windows and Mac, in no particular order:</p>
+<ul>
+<li>In <strong>Chrome</strong>, selecting the the address bar is <code>Command+L</code> and not Command+D (muscle memory for Alt+D on Windows)</li>
+<li><strong>Switching between languages</strong> is <code>Command+Space</code>. It’s not possible to bind language switching to Command+Shift (like Alt+Shift on Windows)</li>
+</ul>
+<p>The shortcuts found in all menus are represented by symbols, which can sometimes be annoying to remember (e.g. &#x2318; for the Command Key, &#x2325; for the Option Key). I have installed <a href="https://github.com/keycastr/keycastr" target="_blank" rel="external">KeyCastr</a> - a small keystroke visualization utility to help me remember which is which.</p>
+</li>
+</ul>
+<hr>
+
+<p>I’m sure I forgot a bunch of things, but the hardest thing to adjust to, I found, is the Command/Ctrl switch: things like copy and paste on a Mac are Command+C/Command+V, which require a thumb press on the Command, which is very uncomfortable at first (think pressing Alt+C instead of Ctrl+C on Windows.)</p>
+<p>Overall, I’m happy with the experience. Things work a bit differently here, but it’s not all bad. Most importantly, I finally have the <a href="https://github.com/nvbn/thefuck" target="_blank" rel="external">best command line utility</a> working on my Mac!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I recently started a &lt;a href=&quot;http://wix.engineering/&quot;&gt;shiny new job&lt;/a&gt;, and got a shiny new Macbook Pro to go with it. Having spent most of my personal and professional life on Windows, I knew that an adjustment period would have to follow. Below are my impressions, the good, bad, and the ugly side of adjusting to One Cupertino Way after a lifetime on Windows.&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Getting with the times: migrating from WordPress to GitHub Pages with Hexo</title>
+    <link href="http://hmemcpy.com/2016/06/getting-with-the-times-migrating-from-wordpress-to-github-pages-with-hexo/"/>
+    <id>http://hmemcpy.com/2016/06/getting-with-the-times-migrating-from-wordpress-to-github-pages-with-hexo/</id>
+    <published>2016-06-11T11:22:11.000Z</published>
+    <updated>2017-03-07T10:55:26.581Z</updated>
+    
+    <content type="html"><![CDATA[<p>I was finally able to migrate from WordPress to a gorgeous, static, and blazing fast blog, hosted on <a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a> for free. Here is a recap of what I did, starting with exporting all data from WordPress, and finishing with setting up an automatic publishing with <a href="https://www.appveyor.com/" target="_blank" rel="external">AppVeyor</a>!</p>
+<p>Let’s begin!</p>
+<a id="more"></a>
+<p>There are many options for generating static websites available: Jekyll, Octopress, Wyam, Sandra.Snow, to name a few (see the complete list <a href="https://www.staticgen.com/" target="_blank" rel="external">here</a>), however I decided on a Node.js based generator called <a href="https://hexo.io/" target="_blank" rel="external">Hexo.io</a>, based on a few recommendations.</p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>For the migration process, you will need the following:</p>
+<ul>
+<li>Existing (hosted) WordPress blog - admin access required to install several plugins (WordPress.com blogs are not supported)</li>
+<li><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> installed and ready</li>
+<li><a href="https://github.com/" target="_blank" rel="external">GitHub</a> and <a href="https://www.appveyor.com/" target="_blank" rel="external">AppVeyor</a> accounts</li>
+<li>Favorite Markdown/text editor (I prefer <a href="https://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>)</li>
+</ul>
+<h3 id="Step-1-Export-WordPress-data-as-Jekyll"><a href="#Step-1-Export-WordPress-data-as-Jekyll" class="headerlink" title="Step 1: Export WordPress data as Jekyll"></a>Step 1: Export WordPress data as Jekyll</h3><p>Jekyll, being one of the older static generators, is widely supported, including this wonderful plugin for WordPress called <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter" target="_blank" rel="external">WordPress to Jekyll Exporter</a>. </p>
+<p>Go to your WordPress admin panel and install the <strong>WordPress to Jekyll Exporter</strong> plugin. After installing and activating the plugin, you should have a new menu under <strong>Tools</strong> called <strong>Export to Jekyll</strong>. Depending on the size of your blog, this might take a few minutes to complete, but a new zip file called <code>jekyll-export.zip</code> should begin downloading.</p>
+<p>Exported data from WordPress will contain all the posts and other static pages in Markdown (.md) files. The blog posts themselves are contained in a <code>_posts</code> directory inside the <code>jekyll-export.zip</code> archive.</p>
+<p>Since our ultimate goal is to eventually delete the WordPress blog, it’s best to make a complete backup of all the content. You can do this via your hosting’s FTP or with another great WordPress plugin called <strong>Duplicator</strong>, which can export everything for you into a zip file. We will also need the contents of this zip to replace any broken images and other files.</p>
+<h3 id="Step-2-Configuring-Hexo"><a href="#Step-2-Configuring-Hexo" class="headerlink" title="Step 2: Configuring Hexo"></a>Step 2: Configuring Hexo</h3><p>Create a new Hexo site using e.g. <code>hexo init blog</code>, it will create a directory called <code>blog</code>, containing configuration files and a default theme. Perform any additional configuration as <a href="https://hexo.io/docs/index.html" target="_blank" rel="external">specified in the docs</a>.</p>
+<p>Next, we need to import our exported WordPress data. Follow the <a href="https://hexo.io/docs/migration.html#Jekyll" target="_blank" rel="external">migration instructions</a> on Hexo docs. This will make Hexo use the default Jekyll post format (<code>yyyy-MM-dd-title.md</code>), so no renaming is needed. I actually prefer it like this.</p>
+<p>Start the hexo server by running <code>hexo server --debug</code> (to output any parsing errors which may occur). This should launch the blog at address <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>.</p>
+<p>The default post metadata inside each exported .md file will contain lots of tags that are not needed, like <code>id</code>, <code>permalink</code>, metadata for Akismet and Disqus (if relevant). This, in turn, might interfere with how Hexo creates post links. Remove all the extra metadata that is not required. </p>
+<p>In my particular case, I had removed ALL additional entries from the post headers, except <code>title</code> and <code>date</code>, e.g.:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">---</div><div class="line">title: ReSharper 4.5 Beta Released - First Impressions</div><div class="line">date: date: 2009-03-18T06:46:28+00:00</div><div class="line">---</div></pre></td></tr></table></figure>
+<p>After removing and saving the .md file, it will be automatically recompiled by Hexo (if the server is running). Refresh the browser window to see the changes</p>
+<h3 id="Step-3-Manual-labor"><a href="#Step-3-Manual-labor" class="headerlink" title="Step 3: Manual labor"></a>Step 3: Manual labor</h3><p>Here is the nasty part - fixing up any syntax errors and broken images. Unfortunately, in some cases the export does not do a very good job, so manual tweaks are needed. If you used Windows Live Writer to write posts (as I had), you’ll find it likes replacing <code>-</code> with <code>&amp;ndash;</code>, and worse. This part is, unfortunately, the most difficult in this entire process.</p>
+<p>Once you’re done fixing <em>most</em> issues, verifying each time it renders correctly in the browser, time to set up GitHub!</p>
+<p>Tip: make sure to utilize Hexo’s <a href="https://hexo.io/docs/tag-plugins.html" target="_blank" rel="external">Tag plugins</a> as much as possible, they really help when dealing with things like relative image locations.</p>
+<h3 id="Step-4-Deploying-to-GitHub"><a href="#Step-4-Deploying-to-GitHub" class="headerlink" title="Step 4: Deploying to GitHub"></a>Step 4: Deploying to GitHub</h3><p>There are two ways to set up GitHub pages: per user/organization or per project. We will use the latter option, keeping both the source (.md files) and the generated static pages (.html) in the same repo (using the special <code>gh-pages</code> branch for the static files).</p>
+<p>We’ll start by creating a repository for our blog. I called mine after the domain name, <code>hmemcpy.com</code>. Copy the HTTPS (not SSH) URL of the repository to the clipboard (HTTPS is required for deploying from AppVeyor, see below).</p>
+<p>Next, we need to prepare the blog for automated git deployment, by using a plugin called <a href="https://hexo.io/docs/deployment.html#Git" target="_blank" rel="external">hexo-deployer-git</a>. Install the plugin per instructions. Add the following to the <code>_config.yml</code> file (under Deployment):</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> git</div><div class="line"><span class="attr">  repo:</span> &#123;github-repo-https-address&#125; <span class="comment">#(e.g. https://github.com/hmemcpy/hmemcpy.com.git)</span></div><div class="line"><span class="attr">  branch:</span> gh-pages</div></pre></td></tr></table></figure>
+<p>Next, we need to make the <code>blog</code> directory into a git repo. We can do this by typing the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &#123;your-git-repo-url&#125;</div><div class="line">git add -A</div><div class="line">git commit -m &quot;Hello Hexo!&quot;</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<p>Once everything is set, type <code>hexo deploy</code> to generate and deploy the site to GitHub! Once it’s done, verify it works by navigating to <em>username</em>.github.io/<em>reponame</em>. This proves that Hexo is set up to deploy automatically to the correct branch (<code>gh-pages</code>). Lastly, we will automate this!</p>
+<h3 id="Step-5-Auto-deploy-to-GitHub-from-AppVeyor"><a href="#Step-5-Auto-deploy-to-GitHub-from-AppVeyor" class="headerlink" title="Step 5: Auto-deploy to GitHub from AppVeyor"></a>Step 5: Auto-deploy to GitHub from AppVeyor</h3><p><a href="https://www.appveyor.com/" target="_blank" rel="external">AppVeyor</a> is a great Continuous Delivery service, which can perform lots of tasks, including launching our own custom commands. Our goal is to perform <code>hexo deploy</code> for us, each time a change is made on the source (<code>master</code> branch).</p>
+<p>There are several things we need to do.</p>
+<p>First, in order to deploy to our repo from AppVeyor, we need to create a <a href="https://github.com/blog/1509-personal-api-tokens" target="_blank" rel="external">Personal access token</a> on GitHub. Go to <a href="https://github.com/settings/tokens" target="_blank" rel="external">https://github.com/settings/tokens</a>, and click <strong>Generate new token</strong>. After entering your password for security purposes, create a new token with the <code>repo</code> permissions:</p>
+<img src="/2016/06/getting-with-the-times-migrating-from-wordpress-to-github-pages-with-hexo/token.png" alt="token.png" title="">
+<p>After clicking <strong>Generate token</strong>, you’ll have the token appear. Copy it to the clipboard now! </p>
+<p>Next, to use the token securely from AppVeyor we need to <em>encrypt</em> it.</p>
+<p>Go to <a href="https://ci.appveyor.com/tools/encrypt" target="_blank" rel="external">https://ci.appveyor.com/tools/encrypt</a>, and paste the token value into the <strong>Value to encrypt</strong> input field, and press the <strong>Encrypt</strong> button. Copy the <em>Encrypted value</em> to the clipboard.</p>
+<p>Next, add a file called <code>appveyor.yml</code> to the root of your blog directory (next to <code>_config.yml</code>), containing the following:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="attr">branches:</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> master</div><div class="line"></div><div class="line"><span class="attr">init:</span></div><div class="line"><span class="bullet">  -</span> git config --global core.autocrlf <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="attr">environment:</span></div><div class="line"><span class="attr">  access_token:</span></div><div class="line"><span class="attr">    secure:</span> &#123;Encrypted token value&#125;</div><div class="line"></div><div class="line"><span class="attr">install:</span></div><div class="line"><span class="bullet">  -</span> npm install -g npm</div><div class="line"><span class="bullet">  -</span> npm install -g hexo-cli</div><div class="line"><span class="bullet">  -</span> npm install</div><div class="line"><span class="attr">cache:</span></div><div class="line"><span class="bullet">  -</span> node_modules -&gt; package.json</div><div class="line"></div><div class="line">  <span class="comment"># Don't actually build.</span></div><div class="line"><span class="attr">build:</span> off</div><div class="line"><span class="attr">test:</span> off</div><div class="line"></div><div class="line"><span class="attr">deploy_script:</span></div><div class="line">  <span class="comment"># See http://www.appveyor.com/docs/how-to/git-push for more info</span></div><div class="line"><span class="bullet">  -</span> git config --global credential.helper store</div><div class="line"><span class="bullet">  -</span> git config --global user.email <span class="string">"&#123;your email address&#125;"</span> </div><div class="line"><span class="bullet">  -</span> git config --global user.name <span class="string">"&#123;your name&#125;"</span></div><div class="line"><span class="attr">  - ps:</span> Add-Content <span class="string">"$env:USERPROFILE\.git-credentials"</span> <span class="string">"https://$($env:access_token):x-oauth-basic@github.com`n"</span></div><div class="line"><span class="bullet">  -</span> hexo deploy --generate</div></pre></td></tr></table></figure>
+<p>Finally, we need to create a <a href="https://help.github.com/articles/setting-up-your-pages-site-repository/" target="_blank" rel="external">CNAME file</a>, if we want to use a custom domain with our repo. Luckily, Hexo supports deploying arbitrary files! Create a new file called <code>CNAME</code> (no extension), put the domain name without <code>http</code> or <code>https</code> prefix, and put it under the <code>source</code> directory of your blog, next to <code>_posts</code>. If you want a custom favicon or robots.txt, place them there as well.</p>
+<p>Save and push the files to GitHub. We’re now should be all set for automated deployment!</p>
+<p>In AppVeyor, click <strong>New Project</strong> and select your blog repo. With <code>appveyor.yml</code> in the repo root, there’s no need for any additional configuration! Press <strong>New Build</strong> and wait. If everything was successful, your new blog should be auto deployed to GitHub!</p>
+<p>Happy blogging! </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I was finally able to migrate from WordPress to a gorgeous, static, and blazing fast blog, hosted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; for free. Here is a recap of what I did, starting with exporting all data from WordPress, and finishing with setting up an automatic publishing with &lt;a href=&quot;https://www.appveyor.com/&quot;&gt;AppVeyor&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Let’s begin!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SOLVED: A case of a failing Windows Update (KB3124200) on Windows 10</title>
+    <link href="http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/"/>
+    <id>http://hmemcpy.com/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/</id>
+    <published>2016-01-12T16:19:35.000Z</published>
+    <updated>2017-03-07T10:55:26.581Z</updated>
+    
+    <content type="html"><![CDATA[<p>I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can serve as a general troubleshooting step when google searches lead you nowhere.</p>
+<a id="more"></a>
+<blockquote><p>in my particualr case, (temporary) enabling the Administrator user (after running <code>sfc /scannow</code> in an elevated prompt, followed by <code>net user administrator /active:yes</code>) allowed the update to install successfully! After installing and rebooting the machine, I disabled the built-in Administrator account using <code>net user administrator /active:no</code> from an elevated prompt.</p>
+<footer><strong>TL;DR</strong></footer></blockquote>
+<p>/verbose</p>
+<p>After failing to install the update, from both Windows Update and manually downloading it, I turned to the web, trying to find solutions. Most of the forums describing the problem were either abandoned, or given the basic generic troubleshooting tips, which are rarely useful (all they tell you there’s a problem, as if you didn’t know).</p>
+<p>One of those <em>tips</em> is running <a href="https://support.microsoft.com/en-us/kb/929833" target="_blank" rel="external">sfc /scannow</a>. The result of running this check is a (sometimes huge) log file called CBS.log, located in </p>
+<pre><code>%WinDir%\Logs\CBS\CBS.log
+</code></pre><p>This log file will also be created as part of the standard system file checking done by installing Windows Updates.</p>
+<p>What I did was, after my computer failed to install, and rolled back the installation again, was open this log file in Notepad++, then searching for entries with <strong>Error</strong>. Surprisingly, I saw a few lines that looked like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-01-11 20:17:42, Info   CSI    00000046 Loading user account SID [l:92&#123;46&#125;]&quot;S-1-5-21-3692211415-2751783221-3488552363-1001&quot;</div><div class="line">2016-01-11 20:17:42, Info   CSI    00000046 Loading user account SID [l:92&#123;46&#125;]&quot;S-1-5-21-3692211415-2751783221-3488552363-500&quot;</div><div class="line">2016-01-11 20:17:42, Error  CSI    00000048@2016/1/11:20:17:42.338 (F) base\wcp\rtllib\inc\auto_hive.h(105): Error STATUS_OBJECT_PATH_NOT_FOUND originated in function Windows::Rtl::AutoHive::Load expression: (null) [gle=0x80004005]</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>So it seems that it was trying to load a user account with SID ending in <code>-500</code>, and failed. Googling for the error text led me to <a href="https://answers.microsoft.com/en-us/insider/forum/insider_wintp-insider_update/latest-kb3074665-update-fails-to-install/45f314d1-2ea8-452c-b59f-60440b9f4e46?page=3" target="_blank" rel="external">this post</a> on the Microsoft forums, describing a similar problem. A little down on page 3, someone suggested running a PowerShell command, dumping all the user SIDs to the console:</p>
+<pre><code>get-wmiobject -class &quot;win32_account&quot; -namespace &quot;root\cimv2&quot; | sort caption | format-table caption, FullName, SID
+</code></pre><p>Which led me to see that the problematic SID belonged to the Administrator user! On Windows 10 machines, the Administrator account is disabled by default, and this is why I suspected the update was trying to install itself into the Administrator user’s hive, but couldn’t find it.</p>
+<img src="/2016/01/solved-a-case-of-a-failing-windows-update-kb3124200-on-windows-10/powershell.png" alt="Listing output in PowerShell" title="Listing output in PowerShell">
+<p>I’ve enabled the Administrator account using a net user command:</p>
+<pre><code>net user Administrator /active:yes
+</code></pre><p>And tried installing the update again. To my surprise, it installed successfully and didn’t roll back!</p>
+<p>After rebooting, I verified the update was listed in Windows Updates’ history, and disabled the Administrator account again.</p>
+<p>If your updates failing to install:</p>
+<ul>
+<li>run <code>sfc /scannow</code></li>
+<li>check CBS.log</li>
+<li>hope for the best!</li>
+</ul>
+<p>Good luck!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’m writing this post mainly to myself, explaining how I figured out why this particular Windows Update package was failing to install on my Windows 10 (installation began, then rolled back). This can serve as a general troubleshooting step when google searches lead you nowhere.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Review: my new HP Spectre x360 2-in-1 convertible laptop</title>
+    <link href="http://hmemcpy.com/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/"/>
+    <id>http://hmemcpy.com/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/</id>
+    <published>2015-12-04T14:38:45.000Z</published>
+    <updated>2017-03-07T10:55:26.581Z</updated>
+    
+    <content type="html"><![CDATA[<p><img style="float: right; padding: 5px;" src="/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/image1.png">I decided to get with the times, and get myself a mid-level ultraportable machine I can carry around while traveling. Knowing almost nothing about this category of computers (and having avoided touch-enabled hybrids/tables until now), I spent considerable time researching. My requirements were simple:</p>
+<ul>
+<li>a secondary machine (my 3 year old behemoth HP EliteBook 8570w is still the best development machine I’ve got)</li>
+<li>light, portable (so, about 13”), touch-enabled (most of them are, anyway)</li>
+<li>good typing experience (I considered a Surface 3/4 with Type Cover keyboard, but typing experience got mixed reviews)</li>
+<li>$1000 or less</li>
+</ul>
+<a id="more"></a>
+<p>I decided to take advantage of the Black Friday sales and finally settled on the <a href="http://store.hp.com/us/en/mdp/Laptops/spectre-x360-211501--1" target="_blank" rel="external">HP Spectre x360</a>, a gorgeous 13” 2-in-1 convertible computer, which was designed by HP together with Microsoft, and given away at Build 2015 to the participants. I’m not going to review it here, I’ll leave this task for Lisa Gade from <a href="https://www.youtube.com/user/MobileTechReview" target="_blank" rel="external">MobileTechReview</a>, who did an exceptional job <a href="https://www.youtube.com/watch?v=I3Cn8IAxsoI" target="_blank" rel="external">reviewing every possible aspect</a> of this computer, including benchmarks. Lisa also did multiple follow-up reviews, comparing the Spectre to the <a href="https://www.youtube.com/watch?v=dp5lc1veQ6E" target="_blank" rel="external">Surface Pro 3</a>, <a href="https://www.youtube.com/watch?v=5oCwB-T7Lr0" target="_blank" rel="external">Dell XPS 13</a>, a <a href="https://www.youtube.com/watch?v=byzl-gCu-c8" target="_blank" rel="external">Macbook Pro</a> and even the new <a href="https://www.youtube.com/watch?v=3DQxm6v6fGA" target="_blank" rel="external">Surface Book</a>. Needless to say, after watching all those reviews, I had no doubt the Spectre is going to be my new machine!</p>
+<p>As I’m typing this, it turns out there’s a <a href="https://www.thurrott.com/windows/windows-10/6872/hp-spectre-x360-limited-edition-preview" target="_blank" rel="external">newer (limited edition) of the Spectre out</a>, with a 6th generation Skylake processor (mine was 5th generation Broadwell) and a gorgeous Ash Silver finish, but as I mentioned, I didn’t need a spec’d out machine. My 5th gen i7 with 8GB of RAM and 256GB SSD suit me just fine, and I got no buyer’s remorse! (/crying)</p>
+<p><img style="float: right; padding: 5px;" src="/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/image2.png">And now to some more interesting details. There were few things I needed to do, to make this machine <em>usable</em>. First, the keyboard backlight button. The Spectre x360 has a backlit keyboard which can be toggled on and off with the (Fn)F5 button, unfortunately, when it’s off, the F5 button is still lit, reminding you to press it. Luckily, HP released a <a href="http://support.hp.com/us-en/drivers/selfservice/HP-Spectre-x360-Convertible-PC-Series/7527520/model/7791778" target="_blank" rel="external">BIOS update</a>, adding an option to turn this light off. To access the BIOS, hammer on the Esc after powering the machine on, until you get a menu. Press F10 to enter the BIOS.</p>
+<p>The second part had to do with repaving the machine and installing Windows 10 on it from scratch. Even though this is a Microsoft <em>signature edition</em> computer, meaning it comes with (very little) bundled software, I am old school (emphasis on the old), and wanted to repave and repartition the machine myself, from a bootable USB stick containing Windows 10. However, when I went to the drive selection in the post-boot menu, I did not see my USB stick &ndash; I could only see UEFI entries. A quick search led me to one of two possible solutions: enable Legacy Mode (CSM) in the BIOS, or <a href="http://www.windowscentral.com/how-create-windows-10-usb-installation" target="_blank" rel="external">create a bootable UEFI Windows 10 USB stick</a> using a wonderful utility called <a href="https://rufus.akeo.ie/" target="_blank" rel="external">Rufus</a>, which not only supports creating bootable UEFI sticks, it’s <strong>x2 faster</strong> than the old Windows USB utility! After creating the UEFI stick per instructions above, I was able to boot from it, and install Windows 10 from scratch.</p>
+<p>I’ve now typed this review on the Spectre, and the experience is amazing! The keyboard feels sturdy, the trackpad is precise (albeit big &ndash; iPhone 6 big) and I even flipped the screen over to use some touch apps (for the first time ever). I am happy with my new HP Spectre x360 and can definitely recommend it!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img style=&quot;float: right; padding: 5px;&quot; src=&quot;/2015/12/review-my-new-hp-spectre-x360-2-in-1-convertible-laptop/image1.png&quot; /&gt;I decided to get with the times, and get myself a mid-level ultraportable machine I can carry around while traveling. Knowing almost nothing about this category of computers (and having avoided touch-enabled hybrids/tables until now), I spent considerable time researching. My requirements were simple:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a secondary machine (my 3 year old behemoth HP EliteBook 8570w is still the best development machine I’ve got)&lt;/li&gt;
+&lt;li&gt;light, portable (so, about 13”), touch-enabled (most of them are, anyway)&lt;/li&gt;
+&lt;li&gt;good typing experience (I considered a Surface 3/4 with Type Cover keyboard, but typing experience got mixed reviews)&lt;/li&gt;
+&lt;li&gt;$1000 or less&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>7 open-source Visual Studio Extensions to make your life easier</title>
+    <link href="http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/"/>
+    <id>http://hmemcpy.com/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/</id>
+    <published>2015-10-28T20:15:19.000Z</published>
+    <updated>2017-03-07T10:55:26.561Z</updated>
+    
+    <content type="html"><![CDATA[<p>It’s time to upgrade your <em>favorite</em> IDE! In this post I will list some of my favorite &#8220;off-the-beaten-path&#8221; extensions for Visual Studio that make my daily tasks much easier. I will not list the obvious ones, such as <a href="https://www.jetbrains.com/resharper/" target="_blank" rel="external">ReSharper</a> and <a href="http://www.oz-code.com/" target="_blank" rel="external">OzCode</a> (or even <a href="http://vswebessentials.com/" target="_blank" rel="external">Web Essentials</a>), but rather few relatively unknown ones that do some very cool things.</p>
+<p>Are you ready? Let’s begin!</p>
+<a id="more"></a>
+<h1 id="BuildVision"><a href="#BuildVision" class="headerlink" title="BuildVision"></a>BuildVision</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/23d3c821-ca2d-4e1a-a005-4f70f12f77ba" target="_blank" rel="external">BuildVision</a> (<a href="https://github.com/nagits/BuildVision" target="_blank" rel="external">source</a>) is an extension that visualizes your build process:</p>
+<p><img src="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot1.png" alt=""></p>
+<p>This little extension shows you the status of your build process, how long it took, and most importantly, errors (if any), that occurred during the build. What’s nice about this, is the errors are grouped under each project, so it’s much easier to navigate than going through a flat list in the Errors output:</p>
+<p><img src="https://raw.githubusercontent.com/nagits/BuildVision/master/Screenshots/screenshot4.png" alt=""></p>
+<h1 id="Git-Diff-Margin"><a href="#Git-Diff-Margin" class="headerlink" title="Git Diff Margin"></a>Git Diff Margin</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/cf49cf30-2ca6-4ea0-b7cc-6a8e0dadc1a8" target="_blank" rel="external">GitDiffMargin</a> (<a href="https://github.com/laurentkempe/GitDiffMargin" target="_blank" rel="external">source</a>) adds a margin on the left column (or the scroll bar, if you prefer) of the Visual Studio editor, and shows you the diffs between your changed/deleted lines, allowing you to navigate and revert quickly to the previous change!</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/git_diff_margin.png" alt="Git Diff Margin" title="Git Diff Margin">
+<p>It’s a perfect companion to git projects (so, all of them!), and it works very nicely with the Visual Studio Git Provider, if you use it. </p>
+<p>Which brings me to:</p>
+<h1 id="NoGit"><a href="#NoGit" class="headerlink" title="NoGit"></a>NoGit</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/146b404a-3c91-46ff-932a-fb0f8b826f94" target="_blank" rel="external">NoGit</a> (<a href="https://github.com/markrendle/nogit" target="_blank" rel="external">source</a>) does one thing and one thing only &ndash; it <strong>disables</strong> the built-in Visual Studio Git source-control provider, which has a habit of re-enabling itself whenever you open a solution that uses git. NoGit will turn off this provider always, whenever a solution is opened.</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png" alt="NoGit" title="NoGit">
+<h1 id="Reopen-Start-Page"><a href="#Reopen-Start-Page" class="headerlink" title="Reopen Start Page"></a>Reopen Start Page</h1><p>Another time saver is <a href="https://visualstudiogallery.msdn.microsoft.com/e64380ab-e3aa-4ac7-aa11-95719c5c91e9" target="_blank" rel="external">Reopen Start Page</a> (<a href="https://github.com/jlattimer/VSReopenStartPage" target="_blank" rel="external">source</a>), which does exactly what it says &ndash; reopens the Visual Studio Start page when you close a solution. Personally, I make use of the recent solutions list on the Start page, which makes it really convenient to open recent solutions!</p>
+<h1 id="SaveAllTheTime"><a href="#SaveAllTheTime" class="headerlink" title="SaveAllTheTime"></a>SaveAllTheTime</h1><p><a href="https://visualstudiogallery.msdn.microsoft.com/ee676c7f-83e8-4ef8-87ab-22a95ae8f1d4" target="_blank" rel="external">SaveAllTheTime</a> (<a href="https://github.com/paulcbetts/SaveAllTheTime" target="_blank" rel="external">source</a>) is another gem that makes Visual Studio to save changed files and projects ALL THE TIME. Visual Studio sometimes doesn’t save project files when you rename or move files around. SaveAllTheTime makes sure everything is saved before you commit your changes!</p>
+<p>In addition, SaveAllTheTime contains a small widget, reminding you to commit often. If you’re a git power user, or don’t use git(ಠ_ಠ), you can disable this widget.</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/no_git.png" alt="Save All The Time" title="Save All The Time">
+<h1 id="TabSanity"><a href="#TabSanity" class="headerlink" title="TabSanity"></a>TabSanity</h1><p>I discovered <a href="https://visualstudiogallery.msdn.microsoft.com/ac4d4d6b-b017-4a42-8f72-55f0ffe850d7" target="_blank" rel="external">TabSanity</a> (<a href="https://github.com/jedmao/tabsanity-vs" target="_blank" rel="external">source</a>) fairly recently, and it was one of those <em>where has this been all my life!!1</em> moments. This extension makes tabs-as-spaces behaves like actual tabs! The backspace and delete keys, arrow key navigation will not allow the caret to land within the spaces that form a tab, and it will skip to the next <em>tab</em>, saving you keystrokes!</p>
+<h1 id="EmojiVS"><a href="#EmojiVS" class="headerlink" title="EmojiVS"></a>EmojiVS</h1><p>Finally, let’s add some fun to our code with <a href="https://visualstudiogallery.msdn.microsoft.com/88575465-8486-4c5a-8406-05e8d1d5b09d" target="_blank" rel="external">EmojiVS</a> (<a href="https://github.com/jbevain/EmojiVS" target="_blank" rel="external">source</a>) &ndash; an extension that adds github emojis to your code (more specifically, code comments). Because, why not?</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs1.png" alt="EmojiVS" title="EmojiVS">
+<p>And it even gives you IntelliSense:</p>
+<img src="/2015/10/7-open-source-visual-studio-extensions-to-make-your-life-easier/emojivs2.png" alt="EmojiVS in Action" title="EmojiVS in Action">
+<p>Note: if you’re a ReSharper user, you need to install the <a href="https://github.com/hmemcpy/ReSharper.ReMoji" target="_blank" rel="external">ReMoji</a> extension <em>in addition to</em> EmojiVS to get code completion.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;It’s time to upgrade your &lt;em&gt;favorite&lt;/em&gt; IDE! In this post I will list some of my favorite &amp;#8220;off-the-beaten-path&amp;#8221; extensions for Visual Studio that make my daily tasks much easier. I will not list the obvious ones, such as &lt;a href=&quot;https://www.jetbrains.com/resharper/&quot;&gt;ReSharper&lt;/a&gt; and &lt;a href=&quot;http://www.oz-code.com/&quot;&gt;OzCode&lt;/a&gt; (or even &lt;a href=&quot;http://vswebessentials.com/&quot;&gt;Web Essentials&lt;/a&gt;), but rather few relatively unknown ones that do some very cool things.&lt;/p&gt;
+&lt;p&gt;Are you ready? Let’s begin!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Preventing a certain Windows Update from installing on Windows 10</title>
+    <link href="http://hmemcpy.com/2015/04/preventing-a-certain-windows-update-from-installing-on-windows-10/"/>
+    <id>http://hmemcpy.com/2015/04/preventing-a-certain-windows-update-from-installing-on-windows-10/</id>
+    <published>2015-04-15T12:30:26.000Z</published>
+    <updated>2017-03-07T10:55:26.561Z</updated>
+    
+    <content type="html"><![CDATA[<p>This post explains how to prevent a certain update from installing on a Windows 10 machine (at the time of writing, build 10049). The information below might not be accurate/relevant for future updates.</p>
+<a id="more"></a>
+<p><strong>UPDATE:</strong> Microsoft has released a <a href="https://support.microsoft.com/en-us/kb/3073930" target="_blank" rel="external">tool to hide unwanted updates</a>, which makes the process described below much simpler:</p>
+<img src="/2015/04/preventing-a-certain-windows-update-from-installing-on-windows-10/image.png" alt="Show or hide updates" title="Show or hide updates">
+<p><hr><br>During its preview, Windows 10 does not allow (by default), changing how updates are installed. It was possible to modify this using various <a href="http://www.askvg.com/how-to-change-windows-update-settings-when-managed-or-disabled-by-system-administrator/" target="_blank" rel="external">Group Policy settings and a bit of registry tweaking</a>, but since build 10049 it no longer works &ndash; it’s not possible to restore the <em>old</em> Windows Update applet in Control Panel.</p>
+<p>On my machine (HP EliteBook 8570w), an update for the Synaptics TouchPad drivers took away my middle button, it simply did not appear anymore on the TouchPad properties. Uninstalling the update, and installing the Windows 8.1 Synaptics driver from the HP website helped, but within a day it was automatically updated again.</p>
+<p>An answer on SuperUser suggested <a href="http://superuser.com/a/665163/101" target="_blank" rel="external">disabling all automatic driver updates</a>, but I didn’t want to do that. Luckily, I found a way to disable this particular update despite Windows Update settings were not changeable with a wonderful set of PowerShell tools called <a href="https://gallery.technet.microsoft.com/scriptcenter/2d191bcd-3308-4edd-9de2-88dff796b0bc" target="_blank" rel="external">Windows Update PowerShell Module</a>.</p>
+<p>Here’s how to install the PowerShell module and disable unwanted Windows Updates:</p>
+<ul>
+<li>Download the <a href="https://gallery.technet.microsoft.com/scriptcenter/2d191bcd-3308-4edd-9de2-88dff796b0bc" target="_blank" rel="external">Windows Update PowerShell Module</a>, and extract it to either</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">%USERPROFILE%\Documents\WindowsPowerShell\Modules</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">%WINDIR%\System32\WindowsPowerShell\v1.0\Modules</div></pre></td></tr></table></figure>
+<p>(the former does not require elevation)</p>
+<ul>
+<li>Temporary disable Execution Policy, to allow importing unsigned scripts. From an elevated PowerShell console type:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Set-ExecutionPolicy Unrestricted</div></pre></td></tr></table></figure>
+<p>followed by:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Import-Module PSWindowsUpdate</div></pre></td></tr></table></figure>
+<p>After the module had been imported, restore the Execution Policy to a reasonable setting, such as <code>RemoteSigned</code>.</p>
+<ul>
+<li>Uninstall the unwanted update (if installed), then run the following command to get a list of all available windows updates:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PS&gt; Get-WUList</div><div class="line"></div><div class="line">ComputerName Status KB          Size Title</div><div class="line">------------ ------ --          ---- -----</div><div class="line">LAMBDACORE   D-----            65 MB Synaptics driver update for Synaptics SMBus TouchPad</div><div class="line">LAMBDACORE   D----- KB2956185  68 MB Update for Microsoft OneDrive for Business (KB2956185) 64-Bit Edition</div><div class="line">LAMBDACORE   D----- KB2965255  11 MB Update for Microsoft Office 2013 (KB2965255) 64-Bit Edition</div><div class="line">...</div></pre></td></tr></table></figure>
+<ul>
+<li>Hide the <em>Synaptics driver update</em> by issuing the following command:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PS&gt; Hide-WUUpdate -Title &quot;Synaptics driver*&quot;</div><div class="line"></div><div class="line">ComputerName Status KB          Size Title</div><div class="line">------------ ------ --          ---- -----</div><div class="line">LAMBDACORE   D--H--            65 MB Synaptics driver update for Synaptics SMBus TouchPad</div></pre></td></tr></table></figure>
+<p>The letter H now signifying that the update is hidden! That’s it, the update will now be hidden from Windows Updates, and won’t be installed. To unhide, run:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PS&gt; Hide-WUUpdate -Title &quot;Synaptics driver*&quot; -HideStatus:$false</div></pre></td></tr></table></figure>
+<p>Now, all I have to do is <a href="/2013/12/how-to-change-two-finger-scroll-direction-in-synaptics-touchpad/">change the two-finger scroll direction</a>, and I can get back to work!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This post explains how to prevent a certain update from installing on a Windows 10 machine (at the time of writing, build 10049). The information below might not be accurate/relevant for future updates.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Adding a custom property page to existing project types in Visual Studio</title>
+    <link href="http://hmemcpy.com/2015/03/adding-a-custom-property-page-to-existing-project-types-in-visual-studio/"/>
+    <id>http://hmemcpy.com/2015/03/adding-a-custom-property-page-to-existing-project-types-in-visual-studio/</id>
+    <published>2015-03-27T19:53:18.000Z</published>
+    <updated>2017-03-07T10:55:26.561Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>Note: this post assumes some knowledge developing Visual Studio Extensions (VSIX).</em></p>
+<p>Suppose you’re developing custom tooling that enhances (or otherwise modifies) current project types (for example, C# class libraries or Web applications). This is most commonly done by specifying custom MSBuild properties, typically by adding a <code>.targets</code> file to the project file itself (possibly via NuGet, which can <a href="http://docs.nuget.org/Release-Notes/NuGet-2.5#automatic-import-of-msbuild-targets-and-props-files" target="_blank" rel="external">import <code>.targets</code> files automatically</a>).</p>
+<p>One common way to interact with those custom properties is by adding a page in the project properties, however, most documentation about extending project properties refers to creating your own project systems. Any documentation about extending existing projects is either out of date, or nonexistent.</p>
+<a id="more"></a>
+<p>But, when there’s a will &ndash; there’s a way. TL;DR: Here’s how to add a custom property page to a regular C# console application:</p>
+<ol>
+<li>Create an (empty) VSIX project </li>
+<li>Add a reference to the following assemblies: <code>Microsoft.VisualStudio.AppDesigner.dll</code> (located in the GAC), and <code>Microsoft.VisualStudio.ManagedInterfaces.dll</code> (from the Visual Studio SDK) </li>
+<li>Create a new class that derives from <code>Microsoft.VisualStudio.Editors.PropertyPages.PropPageBase</code> </li>
+<li>Implement the class as follows:</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[ComVisible(<span class="literal">true</span>)]</div><div class="line">[Guid(<span class="string">"some-guid"</span>)]</div><div class="line">[ProvideObject(<span class="keyword">typeof</span>(MyPropertyPageProvider))]</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyPropertyPageProvider</span> : <span class="title">PropPageBase</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> Type ControlType</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> <span class="keyword">typeof</span>(MyPropertyPageControl); &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">string</span> Title</div><div class="line">    &#123; </div><div class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> <span class="string">"My Property Page"</span>; &#125; </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> Control <span class="title">CreateControl</span>(<span class="params"></span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyPropertyPageControl();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Make sure to provide a new GUID in the <code>GuidAttribute</code> (tip: if you use ReSharper, you can create new GUIDs on the fly by typing <code>nguid</code> and pressing Tab), we will need this GUID again soon. Specify the title of your property page, and provide an instance of a UserControl-derived (WinForms, baby!) page that will be the UI. Visual Studio provides an abstract <code>Microsoft.VisualStudio.Editors.PropertyPages.PropPageUserControlBase</code> class you can derive from.</p>
+<p><strong>Important:</strong> Visual Studio will try reading the size of the control from the assembly’s compiled resources &ndash; this requires a .resx file for the user control. Best to create a new User Control using the Add &ndash; User Control context menu (so it can have a .Designer and a .resx files), and change the base type to <code>PropPageUserControlBase</code> afterwards.</p>
+<p>One last piece of the puzzle is hooking it up &ndash; this is where a bit of MSBuild magic comes in. After running your extension (in the Experimental Instance), create a new, say, C# Console application. When the project is created, open its .csproj file in Notepad (or your favorite editor), and add the following property into one of the <code>PropertyGroup</code>s (or create your own <code>PropertyGroup</code>, e.g.):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;PropertyGroup&gt;</div><div class="line">  &lt;CfgPropertyPagesGuidsAddCSharp&gt;&#123;some-guid&#125;&lt;/CfgPropertyPagesGuidsAddCSharp&gt;</div><div class="line">&lt;/PropertyGroup&gt;</div></pre></td></tr></table></figure>
+<p>Using the GUID from before. Save the .csproj file, and when you reload it in Visual Studio, you will now have a brand new (albeit empty) property page in the project’s properties!</p>
+<img src="/2015/03/adding-a-custom-property-page-to-existing-project-types-in-visual-studio/prop.png" alt="Hello Property Page!" title="Hello Property Page!">
+<p>(You can probably add this property dynamically with DTE from your extension, instead of modifying existing projects, but I haven’t tried it.)</p>
+<p>So what happened? Where did <code>CfgPropertyPagesGuidsAddCSharp</code> come from, and what makes it so special? Turns out, after a long investigation, it’s an <em>undocumented</em> property, which is a part of the legacy C# and VB project systems. When Visual Studio processes C# or VB projects, it will look for this property, and attempt to instantiate the COM class at a given GUID. If successful, it will add it as a property page.</p>
+<p>I was able to confirm this works in Visual Studio 2013 and 2015, not sure about the earlier editions.</p>
+<p>So there you have it, a bit of undocumented functionality makes the impossible possible :)</p>
+<p>Happy hacking!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;Note: this post assumes some knowledge developing Visual Studio Extensions (VSIX).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Suppose you’re developing custom tooling that enhances (or otherwise modifies) current project types (for example, C# class libraries or Web applications). This is most commonly done by specifying custom MSBuild properties, typically by adding a &lt;code&gt;.targets&lt;/code&gt; file to the project file itself (possibly via NuGet, which can &lt;a href=&quot;http://docs.nuget.org/Release-Notes/NuGet-2.5#automatic-import-of-msbuild-targets-and-props-files&quot;&gt;import &lt;code&gt;.targets&lt;/code&gt; files automatically&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;One common way to interact with those custom properties is by adding a page in the project properties, however, most documentation about extending project properties refers to creating your own project systems. Any documentation about extending existing projects is either out of date, or nonexistent.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Disabling certain &quot;invisibles&quot; in the Atom Editor</title>
+    <link href="http://hmemcpy.com/2015/03/disabling-certain-invisibles-in-the-atom-editor/"/>
+    <id>http://hmemcpy.com/2015/03/disabling-certain-invisibles-in-the-atom-editor/</id>
+    <published>2015-03-04T13:00:27.000Z</published>
+    <updated>2017-03-07T10:55:26.561Z</updated>
+    
+    <content type="html"><![CDATA[<p>I recently started using GitHub’s <a href="https://atom.io/" target="_blank" rel="external">Atom editor</a>, and other than the <a href="https://github.com/atom/atom/issues/2654" target="_blank" rel="external">slow-ish startup time</a>, I love it very much!</p>
+<p><img style="float: right; padding: 5px;" src="/2015/03/disabling-certain-invisibles-in-the-atom-editor/image.png">One of the things I hate most is redundant whitespaces, so in all editors I use, I try to work with visible whitespace enabled, so I can keep those tiny dots in check. In the Atom editor, this feature is called <strong>Show Invisibles</strong>, however by default it shows <em>all</em> the invisible characters, including endof and newline characters. There’s no UI (yet?) to toggle which ones you want to see, but luckily, Atom is completely <em>hackable</em>, allowing us to do change about anything!</p>
+<a id="more"></a>
+<p>To remove the EOL/newline characters, go to <strong>File &ndash; Open your Config</strong>. The configuration file will open in a new tab, where you can modify the <code>invisibles:</code> entry like so:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="string">"*"</span>:</div><div class="line">  editor:</div><div class="line">    invisibles: </div><div class="line">      eol: <span class="literal">false</span></div><div class="line">      cr: <span class="literal">false</span></div><div class="line">    ...</div></pre></td></tr></table></figure>
+<p>Upon saving the file, Atom will immediately reload the configuration, and only the whitespace dots will remain visible!</p>
+<p>For more information about what can be changed, check out <a href="https://atom.io/docs/latest/customizing-atom" target="_blank" rel="external">Customizing Atom</a>.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I recently started using GitHub’s &lt;a href=&quot;https://atom.io/&quot;&gt;Atom editor&lt;/a&gt;, and other than the &lt;a href=&quot;https://github.com/atom/atom/issues/2654&quot;&gt;slow-ish startup time&lt;/a&gt;, I love it very much!&lt;/p&gt;
+&lt;p&gt;&lt;img style=&quot;float: right; padding: 5px;&quot; src=&quot;/2015/03/disabling-certain-invisibles-in-the-atom-editor/image.png&quot; /&gt;One of the things I hate most is redundant whitespaces, so in all editors I use, I try to work with visible whitespace enabled, so I can keep those tiny dots in check. In the Atom editor, this feature is called &lt;strong&gt;Show Invisibles&lt;/strong&gt;, however by default it shows &lt;em&gt;all&lt;/em&gt; the invisible characters, including endof and newline characters. There’s no UI (yet?) to toggle which ones you want to see, but luckily, Atom is completely &lt;em&gt;hackable&lt;/em&gt;, allowing us to do change about anything!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>A case of mysterious spam links!</title>
+    <link href="http://hmemcpy.com/2015/03/a-case-of-mysterious-spam-links-injection-by-block/"/>
+    <id>http://hmemcpy.com/2015/03/a-case-of-mysterious-spam-links-injection-by-block/</id>
+    <published>2015-03-03T11:01:13.000Z</published>
+    <updated>2017-03-07T10:55:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Update:</strong> <em>I was rightly corrected by the creator of uBlock, those are not links, but CSS selectors inside a <code>&lt;style&gt;</code> tag, to cause the offending links to be removed from the page. Furthermore, those particular rules are being fed from AdBlock Plus’</em> <a href="https://easylist.adblockplus.org/en/" target="_blank" rel="external"><em>EasyList</em></a><em>, and they are not related to uBlock.</em></p>
+<p>I was tweaking a <a href="http://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> theme to match the style of our Bootstrap-based site, when I suddenly noticed an alarming links to porn/spam sites, visible inside Chrome tools:</p>
+<a id="more"></a>
+<img src="/2015/03/a-case-of-mysterious-spam-links-injection-by-block/image1.png" alt="image1.png" title="">
+<p>Alarmed, I didn’t know what to make of this at first. It’s a custom (paid) Bootstrap theme, so I suspected either the theme or one of its plugins was the culprit, however I could not find any code that seemed to inject this particular style.</p>
+<p>Armed with fairly <a href="/2014/03/how-nancy-made-net-web-development-fun/">little knowledge</a> of dealing with web development, I decided to try and set a breakpoint inside the Chrome tools on the text inside the <code>&lt;style&gt;</code> element itself, by right-clicking and selecting <strong>Break on &ndash; Subtree modifications</strong>:</p>
+<img src="/2015/03/a-case-of-mysterious-spam-links-injection-by-block/image2.png" alt="image2.png" title="">
+<p>I reloaded the page and then found myself inside a script called <strong>contentscript-start.js</strong>, which turned out to belong to <a href="https://chrome.google.com/webstore/detail/%C2%B5block/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en" target="_blank" rel="external">uBlock Origin</a>:</p>
+<img src="/2015/03/a-case-of-mysterious-spam-links-injection-by-block/image3.png" alt="image3.png" title="">
+<p>Thanks to George Pollard (<a href="https://twitter.com/porges" target="_blank" rel="external">@porges</a>) I was led to <a href="https://github.com/gorhill/uBlock/issues/161" target="_blank" rel="external">this issue</a> on the uBlock github, where it seemingly replaces all instances of <code>http://face*</code> with a matching filter (which, in this case, a link to a porn site). The reason for this is still unclear to me, as face* generates way more false positives (i.e. facebook).</p>
+<p>This also explains the other link: the bottom of my Bootstrap page contains a link to the Facebook and LinkedIn pages. uBlock must be matching <code>http://link*</code> as well.</p>
+<p>So if you find those while looking at your site through Chrome Dev Tools, don’t be alarmed as I was &ndash; it’s just your friendly neighborly adblock in action!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; &lt;em&gt;I was rightly corrected by the creator of uBlock, those are not links, but CSS selectors inside a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; tag, to cause the offending links to be removed from the page. Furthermore, those particular rules are being fed from AdBlock Plus’&lt;/em&gt; &lt;a href=&quot;https://easylist.adblockplus.org/en/&quot;&gt;&lt;em&gt;EasyList&lt;/em&gt;&lt;/a&gt;&lt;em&gt;, and they are not related to uBlock.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I was tweaking a &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; theme to match the style of our Bootstrap-based site, when I suddenly noticed an alarming links to porn/spam sites, visible inside Chrome tools:&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>How to get changed files from SVN between two revisions with PowerShell</title>
+    <link href="http://hmemcpy.com/2014/12/how-to-get-changed-files-from-svn-between-two-revisions-with-powershell/"/>
+    <id>http://hmemcpy.com/2014/12/how-to-get-changed-files-from-svn-between-two-revisions-with-powershell/</id>
+    <published>2014-12-16T11:38:07.000Z</published>
+    <updated>2017-03-07T10:55:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>As part of <a href="/2014/12/the-2-minute-powershell-intro-for-someone-who-hates-powershell/">teaching myself PowerShell</a> (and converting a legacy mess of perl scripts into something more manageable), I needed a way to export the files that were added or modified between two SVN revisions. After some searching, I came up with this PowerShell script: it takes a repository URL, a <em>from</em> and <em>to</em> revision numbers, and an output directory into which to export the files.</p>
+<a id="more"></a>
+<script src="http://gist.github.com/hmemcpy/3ff5b99bc7886042fa4a.js"></script>
+
+<p>This script uses <a href="https://github.com/michael-wolfenden/CodeCampServer/blob/master/scripts/Carbon/Path/Resolve-FullPath.ps1" target="_blank" rel="external"><code>Resolve-FullPath</code></a> cmdlet from the Carbon project. Turns out, PowerShell’s own <code>Resolve-Path</code> doesn’t work on files/paths that do not exist.</p>
+<p>Here’s how it works:</p>
+<ol>
+<li>It executes <strong><a href="http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.diff.html" target="_blank" rel="external">svn diff</a></strong> command with &ndash;<strong>r</strong> switch, which takes a range of revisions, e.g. 1000:1050. The <strong>summarize</strong> argument shows only the high-level information, and <strong>xml</strong> outputs the data as XML. </li>
+<li>This XML is being queried with an XPath, extracting only the names of the items of kind <em>˜file’ which were </em>˜added’ or *˜modified’. </li>
+<li>For every such file, its relative path is being taken by subtracting the repository path from the full filename. </li>
+<li>The target (sub)directory for that file is being created, if it doesn’t exist. </li>
+<li>It then executes <a href="http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.export.html" target="_blank" rel="external"><strong>svn export</strong></a> command on the current filename, limiting it to the <em>to</em> revision, so that&nbsp; the changes are taken only until that revision. The file is written in the relative target directory.</li>
+</ol>
+<p>This is probably far from <em>idiomatic</em> PowerShell, but it gets the job done! Your improvements are welcome, feel free to comment on the Gist!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;As part of &lt;a href=&quot;/2014/12/the-2-minute-powershell-intro-for-someone-who-hates-powershell/&quot;&gt;teaching myself PowerShell&lt;/a&gt; (and converting a legacy mess of perl scripts into something more manageable), I needed a way to export the files that were added or modified between two SVN revisions. After some searching, I came up with this PowerShell script: it takes a repository URL, a &lt;em&gt;from&lt;/em&gt; and &lt;em&gt;to&lt;/em&gt; revision numbers, and an output directory into which to export the files.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>The 2-minute PowerShell intro for someone who &quot;hates PowerShell&quot;</title>
+    <link href="http://hmemcpy.com/2014/12/the-2-minute-powershell-intro-for-someone-who-hates-powershell/"/>
+    <id>http://hmemcpy.com/2014/12/the-2-minute-powershell-intro-for-someone-who-hates-powershell/</id>
+    <published>2014-12-10T12:06:25.000Z</published>
+    <updated>2017-03-07T10:55:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hi, I’m a developer, and I hate PowerShell<sup>*</sup>. For no reason in particular, PowerShell just never seemed that appealing for me as a developer, as it was always marketed towards sysadmins. And I never liked the syntax &ndash; all those dollar signs reminded me of PHP.</p>
+<a id="more"></a>
+<p>This recently changed, however. A client had a set of legacy perl scripts which nobody could maintain anymore &ndash; and I was tasked with rewriting them. Having recently spent some time writing a script for <a href="http://boxstarter.org/" target="_blank" rel="external">Boxstarter</a> &ndash; an amazing tool that allows you to automate software and environment installations of new machines, powered by <a href="https://chocolatey.org/" target="_blank" rel="external">Chocolatey</a>, in PowerShell, I thought that it could be a good fit for the task. I knew the language is powerful enough to allow the creation of those very useful tools, so I decided to give it a shot. I was not disappointed!</p>
+<p>Luckily, you already have all the tools you need to get started! Every Windows machine comes with both PowerShell and PowerShell ISE (Integrated Scripting Environment) already installed.</p>
+<img src="/2014/12/the-2-minute-powershell-intro-for-someone-who-hates-powershell/image.png" alt="Figure 1: PowerShell ISE &ndash; an IDE for PowerShell with code completion (IntelliSense) and an integrated debugger." title="Figure 1: PowerShell ISE &ndash; an IDE for PowerShell with code completion (IntelliSense) and an integrated debugger.">
+<p>Here’s what you need to know about PowerShell:</p>
+<p>You can do most of your development and debugging in the ISE &ndash; no need to type individual instructions in the PowerShell console. It’s great as a REPL, but nothing beats an IDE. Tip: select a few lines in the ISE and press F8 &ndash; only those lines will be executed!</p>
+<h3 id="What’s-so-great-about-PowerShell"><a href="#What’s-so-great-about-PowerShell" class="headerlink" title="What’s so great about PowerShell?"></a>What’s so great about PowerShell?</h3><p><strong>It’s dynamic</strong> &ndash; every variable can be treated as anything, but also support explicit typing (which are checked at runtime). Variables are prefixed with the <code>$</code> sign.</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><div class="line"><span class="variable">$my</span> = <span class="string">"some string"</span></div><div class="line"><span class="variable">$my</span> = <span class="number">23</span></div><div class="line"><span class="comment"># Runtime error: Cannot convert value "23" to type "System.Xml.XmlDocument"</span></div><div class="line">[xml]<span class="variable">$myXml</span> = <span class="variable">$my</span></div></pre></td></tr></table></figure>
+<p><strong>It’s pipelined</strong> &ndash; every variable or the output of every function can be piped as an input to another function using the pipe (<code>|</code>) operator. It’s extremely useful when dealing with collections and other enumerable objects &ndash; allowing you to filter the elements and transform the result into whatever you need.</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><div class="line"><span class="comment"># a LINQ-like querying with pipelining. </span></div><div class="line"><span class="comment"># The $_ is similar to C#'s lambda argument "x", e.g. Where(x =&gt; x.Name == "chrome") </span></div><div class="line"><span class="variable">$ids</span> = <span class="built_in">Get-Process</span> | <span class="built_in">Where-Object</span> &#123;<span class="variable">$_</span>.Name <span class="nomarkup">-eq</span> <span class="string">"chrome"</span> &#125; | <span class="built_in">Select-Object</span> -Property ID </div><div class="line"></div><div class="line"><span class="comment"># Where-Object and Select-Object can also be written "where" and "select": </span></div><div class="line"><span class="variable">$ids</span> = <span class="built_in">Get-Process</span> | where &#123;<span class="variable">$_</span>.Name <span class="nomarkup">-like</span> <span class="string">"chrome"</span> &#125; | select -Property ID </div><div class="line"><span class="comment"># "where" and "select" are aliases. Use Get-Alias to see all aliases in PowerShell.</span></div></pre></td></tr></table></figure>
+<p><strong>It supports everything you know from .NET &ndash;</strong> although PowerShell defines its own idioms with regards to common operations, such as formatting strings for joining paths, you can use all objects from .NET to do the same thing.</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><div class="line"><span class="variable">$combined</span> = <span class="built_in">Join-Path</span> <span class="variable">$rootDirectory</span> <span class="string">"mySubdirectory"</span> </div><div class="line"><span class="comment"># can be written as: $combined = [System.IO.Path]::Combine($rootDirectory, "mySubdirectory")</span></div></pre></td></tr></table></figure>
+<p><strong>It’s concise</strong> &ndash; everything in PowerShell can be verbose or very concise. By leveraging aliases there are many ways to say what you mean. Here’s an example: the following function gets a list of changed files between two SVN revisions, by executing the <a href="http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.diff.html" target="_blank" rel="external">svn diff</a> command, outputting the result as XML which looks like this:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">diff</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">paths</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">path</span></span></div><div class="line">   <span class="attr">item</span>=<span class="string">"added"</span></div><div class="line">   <span class="attr">props</span>=<span class="string">"none"</span></div><div class="line">   <span class="attr">kind</span>=<span class="string">"file"</span>&gt;hello.txt<span class="tag">&lt;/<span class="name">path</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">path</span></span></div><div class="line">   <span class="attr">item</span>=<span class="string">"modified"</span></div><div class="line">   <span class="attr">props</span>=<span class="string">"none"</span></div><div class="line">   <span class="attr">kind</span>=<span class="string">"file"</span>&gt;other.txt<span class="tag">&lt;/<span class="name">path</span>&gt;</span>   </div><div class="line"><span class="tag">&lt;/<span class="name">paths</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">diff</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>This XML is stored into an <code>$output</code> object, which is defined as a .NET <code>XmlDocument</code>. The object is than being queried via XPath to get only items of kind <em>˜file’ which are </em>˜modified’. Finally, only the text of the node is selected.</p>
+<figure class="highlight ps"><table><tr><td class="code"><pre><div class="line"><span class="keyword">function</span> Get-SvnDiff(<span class="variable">$fromRevision</span>, <span class="variable">$toRevision</span>)</div><div class="line">&#123;</div><div class="line">  [xml]<span class="variable">$output</span> = &amp; svn diff -r $(<span class="string">"&#123;0&#125;:&#123;1&#125;"</span> -f <span class="variable">$fromRevision</span>, <span class="variable">$toRevision</span>) --summarize --xml</div><div class="line">  <span class="variable">$output</span>.SelectNodes(<span class="string">"/diff/paths/path[@item='modified' and @kind='file']"</span>) | % &#123; <span class="variable">$_</span>.<span class="string">"#text"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Quite a lot is going on in this example, which demonstrate the Power of PowerShell:</p>
+<ul>
+<li>A process is started with the <code>&amp;</code> symbol. Can also be started with <a href="http://technet.microsoft.com/en-us/library/hh849848.aspx" target="_blank" rel="external">Start-Process</a> for more options.</li>
+<li>Strings can be formatted with <code>-f</code>, however in this case they are a part of an expression, and have to be escaped into their own expression by using <code>$()</code>.</li>
+<li>The <code>%</code> symbol is an alias of <code>foreach</code>, which is an alias of <code>ForEach-Object</code>. Use <code>Get-Alias -Definition ForEach-Object</code> to see all the alias definitions, or <code>Get-Alias %</code>, for example.</li>
+<li>The last line in a function (or selection) is what gets returned (or printed out). In this case, the result of the last line is a single string, containing the value *˜other.txt’ (it’s the only modified file). If there was more than one result, the return would be an array.</li>
+<li>Finally, to call this method, we use <code>Get-SvnDiff 1000 2000</code>, and we can use the pipe operator (<code>|</code>) to continue modifying the returned values.</li>
+</ul>
+<p>And that’s it! Sure, there is way more to know about PowerShell, but this should be more than enough to get started, or at least, not to get lost when reading and writing simple scripts.</p>
+<p>Happy scripting!</p>
+<hr>
+
+<p><sup>*</sup>Well, slightly less now.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi, I’m a developer, and I hate PowerShell&lt;sup&gt;*&lt;/sup&gt;. For no reason in particular, PowerShell just never seemed that appealing for me as a developer, as it was always marketed towards sysadmins. And I never liked the syntax &amp;ndash; all those dollar signs reminded me of PHP.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>My top 3 favorite Windows productivity tools!</title>
+    <link href="http://hmemcpy.com/2014/10/my-top-3-favorite-windows-productivity-tools/"/>
+    <id>http://hmemcpy.com/2014/10/my-top-3-favorite-windows-productivity-tools/</id>
+    <published>2014-10-21T08:20:44.000Z</published>
+    <updated>2017-03-07T10:55:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>There are way more tools I love and use every day, but the following 3 are my must-haves on every Windows machine I use, so I wanted to share them with you. And they are completely <strong>free</strong>!</p>
+<a id="more"></a>
+<p>(Ok, there are actually 4 &ndash; the first one, <a href="https://chocolatey.org/" target="_blank" rel="external">Chocolatey</a> is a pre-requisite to the others. Chocolatey is a package manager, like <strong>apt-get</strong>, but made with Windows in mind. If you haven’t already, install this first! I’ll wait.)</p>
+<h3 id="1-ndash-Rapid-Environment-Editor-RapidEE"><a href="#1-ndash-Rapid-Environment-Editor-RapidEE" class="headerlink" title="#1 &ndash; Rapid Environment Editor (RapidEE)"></a>#1 &ndash; Rapid Environment Editor (RapidEE)</h3><div class="nuget-badge"><br>  <code>C:\&gt; choco install Devbox-RapidEE</code><br></div>
+
+<p><a href="http://www.rapidee.com" target="_blank" rel="external">RapidEE</a> is an editor for the Windows environment variables! No more being stuck squinting in the unresizeable Windows dialog, this tool will not only let you add, search and modify envvars easily, it will also show invalid paths in red, letting you find dead entries quickly!</p>
+<img src="/2014/10/my-top-3-favorite-windows-productivity-tools/rapidee.png" alt="Rapid Environment Editor" title="Rapid Environment Editor">
+<h3 id="2-ndash-Everything"><a href="#2-ndash-Everything" class="headerlink" title="#2 &ndash; Everything"></a>#2 &ndash; Everything</h3><div class="nuget-badge"><br>  <code>C:\&gt; choco install Everything</code><br></div>
+
+<p>Imagine a list view, with a search box at the top, and nothing else, which finds <strong>any file</strong> in your computer <strong>immediately</strong> &ndash; you have just imagined <a href="http://www.voidtools.com/" target="_blank" rel="external">Everything</a>. This lightweight search engine indexes your entire hard drive(s) in <em>seconds</em> after installing, letting you then find any file, anywhere! My preference is to bind the shortcut for a New Window to <strong>Ctrl-Shift-Z</strong>, so I can pop open Everything everywhere with this single chord. Set it under Tools &ndash; Options &ndash; Keyboard.</p>
+<img src="/2014/10/my-top-3-favorite-windows-productivity-tools/everything.png" alt="Everything" title="Everything">
+<h3 id="3-ndash-Ditto"><a href="#3-ndash-Ditto" class="headerlink" title="#3 &ndash; Ditto"></a>#3 &ndash; Ditto</h3><div class="nuget-badge"><br>  <code>C:\&gt; choco install ditto</code><br></div>
+
+<p><a href="http://ditto-cp.sourceforge.net/" target="_blank" rel="external">Ditto</a> is a clipboard manager for Windows. If you ever used ReSharper’s <a href="https://www.jetbrains.com/resharper/webhelp/Coding_Assistance__Multiple_Entries_Clipboard.html" target="_blank" rel="external">Clipboard Manager</a> you will appreciate this little tool &ndash; it remembers every single <strong>Ctrl-C</strong> you’ve ever done, allowing you to paste back any item at any time! The default shortcut for Ditto is <strong>Ctrl-`</strong>, and it is packed with features, such as searching, exporting and removing entries, with full unicode support and ability to sync clipboards between machines. What’s more, it supports <em>smart paste</em>, allowing you to paste entries in places such as the Windows Command Prompt, which will only support proper <a href="http://www.hanselman.com/blog/Windows10GetsAFreshCommandPromptAndLotsOfHotkeys.aspx" target="_blank" rel="external">copying and pasting only in Windows 10</a>.</p>
+<img src="/2014/10/my-top-3-favorite-windows-productivity-tools/ditto.png" alt="Ditto" title="Ditto">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;There are way more tools I love and use every day, but the following 3 are my must-haves on every Windows machine I use, so I wanted to share them with you. And they are completely &lt;strong&gt;free&lt;/strong&gt;!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Regular Expression enhancements in ReSharper 9</title>
+    <link href="http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/"/>
+    <id>http://hmemcpy.com/2014/10/regular-expression-enhancements-in-resharper-9/</id>
+    <published>2014-10-15T23:03:45.000Z</published>
+    <updated>2017-03-07T10:55:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>Yesterday, JetBrains <a href="http://blog.jetbrains.com/dotnet/2014/10/13/introducing-the-resharper-9-early-access-program/" target="_blank" rel="external">announced</a> the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetBrains to the punch, and let you know about one incredible feature (which I consider a <em>killer feature</em> of ReSharper 9). I am talking about the improvements in dealing with Regular Expressions (Regex)!</p>
+<a id="more"></a>
+<p><strong>Update:</strong> read all about the new <a href="http://blog.jetbrains.com/dotnet/2014/10/27/regular-expression-support-in-resharper-9/" target="_blank" rel="external">Regex support in all its glory on the JetBrains blog</a>!</p>
+<p>There were always 2 ways to write regular expressions in C# code &ndash; either inside one of the methods of Regex class, e.g. <code>Regex.IsMatch</code>, or defining a string literal as a constant, and using it in a Regex class later.</p>
+<p>ReSharper 9 has <strong>Syntax Highlighting</strong> and <strong>Code Completion</strong> for regex literals! When you start typing a regex into a Regex class, you’ll see a list of suggestions, which is being narrowed down as you type:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex1.png" alt="Code Completion" title="Code Completion">
+<p>There’s also a special syntax highlighting for the complete regex &ndash; as well as automatic checking for errors:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex2.png" alt="Syntax Highlighting" title="Syntax Highlighting">
+<p>However, the <em>killer feature</em> is the ability to validate and test the regular expressions straight from Visual Studio! Pressing Alt-Enter anywhere inside the expression will bring the Quick Actions menu, with a new option to <strong>Validate regular expression</strong>:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex3.png" alt="Regex validation menu" title="Regex validation menu">
+<p>Which opens a new window that lets you input some text to validate your regular expression!</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex4.png" alt="Regex validatior" title="Regex validatior">
+<p>But the best part of these new enhancements is the ability to transform <strong>any string literal</strong> into a regular expression! Simply press Alt-Enter inside the string literal, and select <strong>Make regular expression here</strong>:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex5.png" alt="Turn into regex" title="Turn into regex">
+<p>Will turn into:</p>
+<img src="/2014/10/regular-expression-enhancements-in-resharper-9/regex6.png" alt="With syntax highlighting" title="With syntax highlighting">
+<p>And you get all the regex features (validation, intellisense, etc) inside your regex string literals! Amazing!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Yesterday, JetBrains &lt;a href=&quot;http://blog.jetbrains.com/dotnet/2014/10/13/introducing-the-resharper-9-early-access-program/&quot;&gt;announced&lt;/a&gt; the first public EAP of ReSharper 9! While I’m sure they will dedicate whole blog posts about the new (and truly amazing!) features of ReSharper 9, I wanted to beat JetBrains to the punch, and let you know about one incredible feature (which I consider a &lt;em&gt;killer feature&lt;/em&gt; of ReSharper 9). I am talking about the improvements in dealing with Regular Expressions (Regex)!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Debug symbols, dotPeek and long paths in Visual Studio</title>
+    <link href="http://hmemcpy.com/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/"/>
+    <id>http://hmemcpy.com/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/</id>
+    <published>2014-08-01T11:06:04.000Z</published>
+    <updated>2017-03-07T10:55:26.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>In my <a href="/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/">previous post</a>, I explained how to use the symbol server in <a href="http://www.jetbrains.com/decompiler/" target="_blank" rel="external">dotPeek 1.2</a> to debug any assembly in Visual Studio, allowing you to set breakpoints and step into any method (provided it was decompiled by dotPeek).</p>
+<a id="more"></a>
+<p>While this is great, I noticed that there was one particular method I couldn’t step into &ndash; the moment I tried I got the sadly familiar <strong>Source Not Found</strong> page:</p>
+<img src="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/image1.png" alt="image1.png" title="">
+<p>Clicking the <strong>Browse and find…</strong> link did <em>nothing</em>, and the <strong>Source search information</strong> dropdown appeared below. Expanding it, I could see where Visual Studio attempted to load the source file from:</p>
+<img src="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/image2.png" alt="image2.png" title="">
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Locating source for &apos;C:\Users\Igal\AppData\Local\JetBrains\dotPeek\v1.2\SymbolCache\CSharp\Microsoft.VisualStudio.ProjectSystem.VS.Implementation.pdb\538887009A094E419882756878C69B2A1\Microsoft.VisualStudio.ProjectSystem.VS.Implementation\VisualStudio\ProjectSystem\VS\Implementation\Package\Automation\OAProjectItems.cs&apos;. (No checksum.)</div><div class="line">The file &apos;C:\Users\Igal\AppData\Local\JetBrains\dotPeek\v1.2\SymbolCache\CSharp\Microsoft.VisualStudio.ProjectSystem.VS.Implementation.pdb\538887009A094E419882756878C69B2A1\Microsoft.VisualStudio.ProjectSystem.VS.Implementation\VisualStudio\ProjectSystem\VS\Implementation\Package\Automation\OAProjectItems.cs&apos; does not exist.</div><div class="line">Looking in script documents for &apos;C:\Users\Igal\AppData\Local\JetBrains\dotPeek\v1.2\SymbolCache\CSharp\Microsoft.VisualStudio.ProjectSystem.VS.Implementation.pdb\538887009A094E419882756878C69B2A1\Microsoft.VisualStudio.ProjectSystem.VS.Implementation\VisualStudio\ProjectSystem\VS\Implementation\Package\Automation\OAProjectItems.cs&apos;...</div><div class="line">Looking in the projects for &apos;C:\Users\Igal\AppData\Local\JetBrains\dotPeek\v1.2\SymbolCache\CSharp\Microsoft.VisualStudio.ProjectSystem.VS.Implementation.pdb\538887009A094E419882756878C69B2A1\Microsoft.VisualStudio.ProjectSystem.VS.Implementation\VisualStudio\ProjectSystem\VS\Implementation\Package\Automation\OAProjectItems.cs&apos;.</div><div class="line">The file was not found in a project.</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>And so on. Quick search for <code>OAProjectItems.cs</code> using my most favorite tool, <a href="http://www.voidtools.com/" target="_blank" rel="external">Everything</a>, revealed that it was indeed present in that location, so why couldn’t Visual Studio open it? I decided to open the file manually by pasting its full path into the Start &ndash; Run dialog (Win-R), but then I got the following error:</p>
+<img src="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/image3.png" alt="image3.png" title="">
+<p>Finally, I tried to go to the file location using the cmd, and I got my answer &ndash; the path was simply too long for Windows (and therefore, Visual Studio) to handle!</p>
+<img src="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/image4.png" alt="image4.png" title="">
+<p>Windows has an unfortunate <code>MAX_PATH</code> limitation at 260 characters is the source of great pain, and I hope Microsoft fixes it one day. Meanwhile, here’s how to <em>work around</em> this particular issue: dotPeek generates debug symbols under <code>%LOCALAPPDATA%\JetBrains\dotPeek\v1.2\SymbolCache\CSharp</code> for C# code, and unfortunately, it isn’t possible to configure. Luckily, it is possible to configure where Visual Studio looks for debug symbols. This is a little-known page in the <strong>Solution</strong> properties called <strong>Debug Source Files</strong>:</p>
+<img src="/2014/08/debug-symbols-dotpeek-and-long-paths-in-visual-studio/image5.png" alt="image5.png" title="">
+<p>What I did was copy the entire contents of dotPeek’s <code>SymbolCache\CSharp</code> directory into a local directory <code>d:\sym</code>, and added it to the search list (pictured above). Also, I made sure to delete everything from the bottom list (Do not look for these source files) &ndash; if Visual Studio is unable, for any reason, to open a source file, it will add it to this blacklist. It was filled with the files I needed, so I removed them from the list.</p>
+<p>After doing this, I could go back to debugging, was was able to step into methods that were previously unavailable!</p>
+<p>As the comments below mention, this is also possible to do without copying, by creating a (symbolic) link between the directories! From an elevator command shell, run:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mklink /D d:\sym %localappdata%\JetBrains\dotPeek\v1.2\SymbolCache\CSharp</div></pre></td></tr></table></figure>
+<p>Thanks guys!</p>
+<p>Happy debugging!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In my &lt;a href=&quot;/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/&quot;&gt;previous post&lt;/a&gt;, I explained how to use the symbol server in &lt;a href=&quot;http://www.jetbrains.com/decompiler/&quot;&gt;dotPeek 1.2&lt;/a&gt; to debug any assembly in Visual Studio, allowing you to set breakpoints and step into any method (provided it was decompiled by dotPeek).&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>How to debug anything with Visual Studio and JetBrains dotPeek v1.2!</title>
+    <link href="http://hmemcpy.com/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/"/>
+    <id>http://hmemcpy.com/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/</id>
+    <published>2014-07-16T11:30:35.000Z</published>
+    <updated>2017-03-07T10:55:26.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sometimes, we wish we could just step into some 3<sup>rd</sup> party library, to figure out how it works, but we either don’t have the source code, or otherwise just can’t. Fortunately, this is made possible by <strong>dotPeek v1.2</strong> that was <a href="http://blog.jetbrains.com/dotnet/2014/07/16/dotpeek-1-2-is-released/" target="_blank" rel="external">just released</a>, which can act as a symbol server for decompiled assemblies!</p>
+<a id="more"></a>
+<p>So let’s suppose we want to put a breakpoint inside <code>Console.WriteLine</code> (or any other method in any other assembly). Here’s what we need to do:</p>
+<ul>
+<li>Open dotPeek, add the required assemblies to the Assembly Explorer, and press the <strong>Start Symbol Server</strong> button.</li>
+</ul>
+<img src="/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/image1.png" alt="image1.png" title="">
+<p>You can configure the port and the symbol generation settings in <strong>Tools &ndash; Options</strong>. The default address is <code>http://localhost:33417/</code>.</p>
+<ul>
+<li>In Visual Studio, go to <strong>Tools &ndash; Options</strong>, then navigate to <strong>Debugging &ndash; Symbols</strong>. Add the location of the dotPeek symbol server.</li>
+</ul>
+<img src="/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/image2.png" alt="image2.png" title="">
+<p>In addition, make sure that <strong>Just My Code</strong> (in <strong>General</strong>) is unchecked, and press OK. Some symbols will be loaded, this might take a few moments.</p>
+<ul>
+<li>Next, we need to set a breakpoint <em>inside</em> the method which we’re interested in. This can be done with a little-known Visual Studio trick, allowing you to create a breakpoint at any function. Go to <strong>Debug &ndash; New Breakpoint &ndash; Break at Function</strong>, and in the dialog enter the fully qualified method name, e.g. <code>System.Console.WriteLine</code>.</li>
+</ul>
+<img src="/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/image3.png" alt="image3.png" title="">
+<p>After pressing OK, you’ll get a message saying <em>IntelliSense could not find the specified location. Do you still want to set the breakpoint?</em>. It’s fine &ndash; press Yes.</p>
+<ul>
+<li>Finally, start your application with the debugger (F5) and you will stop at the breakpoint! You can use all familiar debugging options, such as stepping over/into, watch, autos and the datatip.</li>
+</ul>
+<img src="/2014/07/how-to-debug-anything-with-visual-studio-and-jetbrains-dotpeek-v1-2/image4.png" alt="image4.png" title="">
+<p>Happy Debugging!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sometimes, we wish we could just step into some 3&lt;sup&gt;rd&lt;/sup&gt; party library, to figure out how it works, but we either don’t have the source code, or otherwise just can’t. Fortunately, this is made possible by &lt;strong&gt;dotPeek v1.2&lt;/strong&gt; that was &lt;a href=&quot;http://blog.jetbrains.com/dotnet/2014/07/16/dotpeek-1-2-is-released/&quot;&gt;just released&lt;/a&gt;, which can act as a symbol server for decompiled assemblies!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Migrating from TFS to git to Visual Studio Online - the survival guide</title>
+    <link href="http://hmemcpy.com/2014/06/migrating-from-tfs-to-git-to-visual-studio-online-the-survival-guide/"/>
+    <id>http://hmemcpy.com/2014/06/migrating-from-tfs-to-git-to-visual-studio-online-the-survival-guide/</id>
+    <published>2014-06-29T20:28:16.000Z</published>
+    <updated>2017-03-07T10:55:26.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is a step-by-step recount of my attempt to migrate an existing 3-year old TFS (TFVC) repository to git, while <em>keeping all the history</em>, and then moving it to <a href="http://www.visualstudio.com/" target="_blank" rel="external">Visual Studio Online</a>, a TFS in the cloud. This wasn’t an easy task, as there is no direct export-import built into either tools. I also ran into some problems during this lengthy process, and I describe the steps to solve them. Set aside a few hours of your time, brew some coffee (or tea), and let’s get started!</p>
+<a id="more"></a>
+<h1 id="Step-1-TFS-to-git"><a href="#Step-1-TFS-to-git" class="headerlink" title="Step 1: TFS to git"></a>Step 1: TFS to git</h1><p>We first need to export the entire TFS repository to git. This is achieved by <em>cloning</em> the entire TFS repository with <a href="https://github.com/git-tfs/git-tfs" target="_blank" rel="external">git-tfs</a> or <a href="https://gittf.codeplex.com/" target="_blank" rel="external">git-TF</a>, both open source tools. While designed to do the same, mainly, providing a bridge between git and TFS, the former is an older, more mature project, and the latter is a tool created by Microsoft for the same purpose. I initially tried to use Microsoft’s git-TF, but after more than <strong>24 hours</strong> of waiting for the clone to end, it <strong>died with a Java exception</strong> (the tool by Microsoft is written in Java).</p>
+<p>First, install git-tfs. It’s best installed with <a href="https://chocolatey.org/" target="_blank" rel="external">Chocolatey</a> by using <code>cinst gittfs</code>. Next, we need to get the exact name of the project we want to clone. Assuming your TFS server is <a href="https://tfs.contoso.com" target="_blank" rel="external">https://tfs.contoso.com</a>, first, run the following command to list all the branches:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git tfs list-remote-branches https://tfs.contoso.com/tfs/DefaultCollection</div></pre></td></tr></table></figure>
+<p>This will output all the branches that exist in the DefaultCollection. Branches marked with <code>[*]</code> are the root branches, and these are what we want to clone. Run the following command to clone the required branch, e.g.:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git tfs clone https://tfs.contoso.com/tfs/DefaultCollection $/Project/MyApp/Dev [&lt;directory&gt;]</div></pre></td></tr></table></figure>
+<p>This will clone the Dev branch (in this case) to a new directory specified in <code>[&lt;directory&gt;]</code>. If <code>[&lt;directory&gt;]</code> is not specified, a new directory called Dev will be created.</p>
+<p><strong>The clone operation might take up to several hours</strong>, depending on the size of your TFS repository. The cloning operation with git-tfs will pull each individual check-in, and will apply it as a series of git operations, <em>recreating the history</em> exactly as it happened! Git-tfs will also run a git-gc operation every 100 commits, so the new repository size will be kept in check, and obsolete files will be removed.</p>
+<p>After the clone operation is complete, you will have a git representation of the TFS repository on your local disk.</p>
+<h1 id="Step-2-git-to-Visual-Studio-Online"><a href="#Step-2-git-to-Visual-Studio-Online" class="headerlink" title="Step 2: git to Visual Studio Online"></a>Step 2: git to Visual Studio Online</h1><p>After <a href="http://go.microsoft.com/fwlink/?LinkId=307137&amp;clcid=0x409" target="_blank" rel="external">setting up a free account</a> in Visual Studio Online (VSO), we first need to create a new project, and make sure Git is selected as the source control. After the project had been created, we can go to the CODE tab, and be presented with instructions to either clone an empty repository, or push an existing one. We want to use the second option, so first, set the remote URL in our cloned git repository to point to VSO.</p>
+<p>In a command prompt (or use any one of the 3<sup>rd</sup>-party visual Git clients), go to the cloned git directory and paste the first command, e.g.:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add origin https://contoso.visualstudio.com/DefaultCollection/_git/MyProj</div></pre></td></tr></table></figure>
+<p>This will set the origin (the remote repository address) to point to our git repository in VSO.</p>
+<p>The most important step is next: unfortunately VSO has a timeout limit of 1 hour for any connection, meaning that an attempt to push the entire repository might fail, if the repository is too big! What’s worse, pushing is an atomic operation, it cannot be resumed in case of a timeout, you will have to start from the beginning.</p>
+<p>Luckily, there’s a workaround I was managed to find at the bottom of a <a href="http://social.msdn.microsoft.com/Forums/vstudio/en-US/bf7d7f99-ba50-48eb-bf0e-4fda818cf992/unable-to-push-a-git-repository" target="_blank" rel="external">similar issue</a> in MSDN forums. Basically, we can push our repository in smaller chunks, thus minimizing the chance of a timeout. This is not the ultimate solution, but it worked for me. Our problem is currently being able to push, subsequent cloning should be much faster, since download bandwidth is almost always faster than the upload.</p>
+<p>Disclaimer: This is a somewhat advanced git usage, and I must admit, I don’t quite understand it myself fully. Below is a series of commands I ran, based on the mentioned issue, and it worked in my case. YMMV. If you can explain this, please leave a comment below!</p>
+<p>First, the issue tells us, we need to get an idea of the number of commits we have, by running the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rev-list --all --count</div></pre></td></tr></table></figure>
+<p>In my case, the number was 4012, which I assume is the total number of commits.</p>
+<p>Next, however, the issue says to run this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rev-list master --first-parent --count</div></pre></td></tr></table></figure>
+<p>Which is the <em>depth of the </em>˜first-parent’ lineage of master*, according to the post author. Not quite sure what this meant (the documentation wasn’t very helpful, either), running this command produced a number which was about half the previous one: 2512.</p>
+<p>Not knowing exactly what the numbers meant, I decided to try and follow the post’s advice, and split that number into 5 sections, of 500 commits each, and I pushed them in the following order:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master~2500:refs/heads/master</div><div class="line">git push origin master~2000:refs/heads/master</div><div class="line">git push origin master~1500:refs/heads/master</div><div class="line">git push origin master~1000:refs/heads/master</div><div class="line">git push origin master~500:refs/heads/master</div></pre></td></tr></table></figure>
+<p>And finally:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<p>To push the remaining commits, and create a remote tracking branch for master. To make extra sure, I ran this last command again, and got <em>Everything up-to date</em> message.</p>
+<p>Refreshing the CODE tab in VSO revealed that all my source code was uploaded successfully! I cloned the repository locally, and ran a diff between the two directories in Beyond Compare, just to make absolutely certain that everything was copied properly. It was!</p>
+<h1 id="Step-3-VSO-to-FogBugz"><a href="#Step-3-VSO-to-FogBugz" class="headerlink" title="Step 3: VSO to FogBugz"></a>Step 3: VSO to FogBugz</h1><p>Few more things left to migrate, and those are all the issues on FogBugz to VSO. In the meantime, though, we need to keep our source control integration with FogBugz. Turns out this is also not a simple task. But, this is a blog post for another day. Stay tuned!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is a step-by-step recount of my attempt to migrate an existing 3-year old TFS (TFVC) repository to git, while &lt;em&gt;keeping all the history&lt;/em&gt;, and then moving it to &lt;a href=&quot;http://www.visualstudio.com/&quot;&gt;Visual Studio Online&lt;/a&gt;, a TFS in the cloud. This wasn’t an easy task, as there is no direct export-import built into either tools. I also ran into some problems during this lengthy process, and I describe the steps to solve them. Set aside a few hours of your time, brew some coffee (or tea), and let’s get started!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>When good permissions gone bad - a case of a failed build</title>
+    <link href="http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/"/>
+    <id>http://hmemcpy.com/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/</id>
+    <published>2014-06-09T13:08:08.000Z</published>
+    <updated>2017-03-07T10:55:26.514Z</updated>
+    
+    <content type="html"><![CDATA[<p>I was called over to see if I could help solve a strange issue &ndash; every time the build script (Ant) for the client’s Android app ran &ndash; certain files that were modified by the build script (a <code>.properties</code> file, few others), were suddenly inaccessible to other people logging to the machine &ndash; only the user who initiated the build could still write to the files. Looking at the file permissions tab proved as much: only the current user and the Administrators group could access the file!</p>
+<a id="more"></a>
+<p>My initial investigation into Ant’s build.xml led me to an interesting discovery &ndash; all the files that lost their permissions were modified using the <a href="http://ant.apache.org/manual/Tasks/replaceregexp.html" target="_blank" rel="external">ReplaceRegExp</a> task for Ant &ndash; a task that could replace text in a file using regular expressions. Quick Google search for <em>replaceregexp ant file permissions</em> led me to <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=36440" target="_blank" rel="external">this similar issue</a>, which was, unfortunately, closed as wontfix.</p>
+<p>I decided to investigate for myself. Using my go-to tool for this task, <a href="http://technet.microsoft.com/en-us/sysinternals/bb896645.aspx" target="_blank" rel="external">Process Monitor</a>, I decided to trace all activity of <strong>java.exe</strong> (which runs the Ant tasks), looking for anything that has to do with setting permissions or writing the file, filtering just the file I was interested in (<strong>project.properties</strong>). After running the specific Ant task that did a simple regex replace in the file, it was indeed changed, and its permissions were changed as well.</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image1.png" alt="image1.png" title="">
+<p>However, looking at the File Summary window of Process Monitor (Tools &ndash; File Summary), I saw that not only there were no new ACL permissions set (Set ACL was called 0 times), no actual bytes were written!</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image2.png" alt="image2.png" title="">
+<p>So how was it possible that the file was modified, but nothing was written? Looking back at the events in Process Monitor I also could not see any calls to WriteFile.</p>
+<p>Feeling confused, I then started looking for anything that could appear relevant, until one entry in particular caught my eye: a call to <strong>SetDispositionInformationFile</strong> with a flag <strong>Delete: True</strong>.</p>
+<img src="/2014/06/when-good-permissions-gone-bada-case-of-a-failed-build/image3.png" alt="image3.png" title="">
+<p>I checked who was calling this API from the Stack tab of this event’s properties, and saw that it was a call to <strong>deleteFile</strong>, originating in <strong>java.dll</strong>. This confirmed my suspicion that the file was not written directly at all &ndash; but <em>replaced</em> with another file, possibly from a temp directory.</p>
+<p>My suspicions proved to be correct &ndash; looking at the <a href="http://svn.apache.org/repos/asf/ant/core/trunk/src/main/org/apache/tools/ant/taskdefs/optional/ReplaceRegExp.java" target="_blank" rel="external">source code</a> for ReplaceRegExp task I saw that it was exactly how it did it: by using</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">FILE_UTILS.createTempFile(<span class="string">"replace"</span>, <span class="string">".txt"</span>, <span class="keyword">null</span>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<p>to create a temporary file, and then later renaming that temporary file with the original file name!</p>
+<p><code>FILE_UTILS</code> turned out to be just a wrapper calling Java’s <a href="http://www.tutorialspoint.com/java/io/file_createtempfile_directory.htm" target="_blank" rel="external"><code>File.createTempFile</code></a>. The 3<sup>rd</sup> argument, which was <code>null</code> in this case, tells <code>createTempFile</code> where to create the file. If <code>null</code> is passed, it will use the default <code>%TEMP%</code> environment variable.</p>
+<p>Which ended up explaining the problem exactly &ndash; by default, it uses the local user’s <code>%TEMP%</code> directory to create the temp file that replaces the original one. The default per-user <code>%TEMP%</code> directory located in the <code>%LOCALAPPDATA%</code> directory of the user’s profile &ndash; meaning only the current user (and local Administrators) can access it! This means, that any file created in this directory will inherit the same permissions! In our case, ReplaceRegExp’s implementation caused the per-user temp file to overwrite the file that was in a public folder, causing it to lose all permissions!</p>
+<p>A quick workaround for the problem was to set the TEMP directory to <code>c:\temp</code>, temporarily, during the build.</p>
+<p>Next time your Ant script causes issues with file permissions &ndash; make sure your files are not replaced under your nose.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I was called over to see if I could help solve a strange issue &amp;ndash; every time the build script (Ant) for the client’s Android app ran &amp;ndash; certain files that were modified by the build script (a &lt;code&gt;.properties&lt;/code&gt; file, few others), were suddenly inaccessible to other people logging to the machine &amp;ndash; only the user who initiated the build could still write to the files. Looking at the file permissions tab proved as much: only the current user and the Administrators group could access the file!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>How to enable login verifications on Twitter from &quot;unsuppored&quot; countries</title>
+    <link href="http://hmemcpy.com/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/"/>
+    <id>http://hmemcpy.com/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/</id>
+    <published>2014-04-26T14:35:45.000Z</published>
+    <updated>2017-03-07T10:55:26.514Z</updated>
+    
+    <content type="html"><![CDATA[<p>It’s funny how a random twitter rant can yield valid solutions. One such rant between <a href="https://twitter.com/omervk" target="_blank" rel="external">@omervk</a> (who co-runs <a href="http://plaintextoffenders.com" target="_blank" rel="external">plaintextoffenders.com</a>) and myself regarding enabling Two Factor Authentication (2FA, or <em>login verification</em>) on twitter being unavailable for people in Israel, caught the attention of <a href="https://twitter.com/thorsheim" target="_blank" rel="external">Per Thorsheim</a>, an independent security consultant and founder of the <a href="http://passwordscon.org/" target="_blank" rel="external">Passwords conference</a>. Per, turns out, was interested in this problem because of another matter, that Twitter seemingly <em>turned off</em> login verification for people who do not have their phone numbers associated with Twitter! Per wrote about his own experiences trying to enable 2FA on twitter <a href="http://securitynirvana.blogspot.no/2014/04/did-twitter-silently-remove-login.html" target="_blank" rel="external">here</a>.</p>
+<a id="more"></a>
+<p>So what is the problem exactly? In order to enable login verifications on Twitter, turns out, you need to <em>either</em> associate your mobile phone number with twitter, or enable sending login verifications to your iOS or Android twitter app. The latter, turns out <em>also</em> requires your phone number!</p>
+<p>Here’s how it supposed to work: you go to the <a href="https://twitter.com/settings/security" target="_blank" rel="external"><strong>Security and privacy</strong></a> settings in your twitter account. If no phone number is associated, you will see these options:</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image1.png" alt="image1.png" title="">
+<p>Notice that both <em>Send</em> options are disabled. Pressing the <strong>add a phone</strong> link takes you to a page where you can enter your phone number (after selecting your country and carrier), however in my case, I got this message after submitting:</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image2.png" alt="image2.png" title="">
+<p>OK, so I can’t add a phone number on the twitter website. Let’s try enabling login verifications on my (Android) twitter app. Go to Settings, your twitter username, then press Security:</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image3.png" alt="image3.png" title="">
+<p>What! I am <em>still</em> being asked to add a phone number!</p>
+<p>This is the part where I initially gave up, but it turned out that clicking <strong>Add phone</strong> takes you to the mobile twitter page (in your phone’s browser), where you can enter your phone number, and in my case <strong>twitter accepted it, and sent me a verification SMS</strong>!</p>
+<p>The UX is confusing at this point, after adding my number, I got an SMS with a 6 digit verification code (and short t.co URL to continue verification), but no place in the page to enter it! In fact, I was asked to <strong>remove</strong> the phone number at this point:</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/phone1.png" alt="phone1.png" title="">
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/phone2.png" alt="phone2.png" title="">
+<p>Very odd. However, pressing the <strong>manage</strong> link above (in the yellow bar) took me to the actual verification page where I was asked to enter the code from the SMS message:</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image5.png" alt="image5.png" title="">
+<p>And after pressing Verify, I got a message confirming that my phone number was successfully added!</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image6.png" alt="image6.png" title="">
+<p>At this point, after going back to the Security and privacy settings on twitter, I saw that my phone number was now added, and could turn on login verifications!</p>
+<img src="/2014/04/how-to-enable-login-verifications-on-twitter-from-unsupported-countries/image7.png" alt="image7.png" title="">
+<p>Also, going to the Security settings on my Android twitter app were now also working!</p>
+<p>In conclusion, the steps above may work for you, even if you can’t add your phone number on the twitter website. Did it work for you? Please leave a comment with your country/carrier, and any additional information!</p>
+<p>Good luck, stay secure!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;It’s funny how a random twitter rant can yield valid solutions. One such rant between &lt;a href=&quot;https://twitter.com/omervk&quot;&gt;@omervk&lt;/a&gt; (who co-runs &lt;a href=&quot;http://plaintextoffenders.com&quot;&gt;plaintextoffenders.com&lt;/a&gt;) and myself regarding enabling Two Factor Authentication (2FA, or &lt;em&gt;login verification&lt;/em&gt;) on twitter being unavailable for people in Israel, caught the attention of &lt;a href=&quot;https://twitter.com/thorsheim&quot;&gt;Per Thorsheim&lt;/a&gt;, an independent security consultant and founder of the &lt;a href=&quot;http://passwordscon.org/&quot;&gt;Passwords conference&lt;/a&gt;. Per, turns out, was interested in this problem because of another matter, that Twitter seemingly &lt;em&gt;turned off&lt;/em&gt; login verification for people who do not have their phone numbers associated with Twitter! Per wrote about his own experiences trying to enable 2FA on twitter &lt;a href=&quot;http://securitynirvana.blogspot.no/2014/04/did-twitter-silently-remove-login.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

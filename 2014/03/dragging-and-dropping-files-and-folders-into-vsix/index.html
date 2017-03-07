@@ -1,0 +1,583 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="lYE6Wy4AMVpA-paUiNWFLIZFk8vqATN4AedYdumNuVo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Fira Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="In Absentia" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Visual Studio Extensions, or VSIX files are simple ZIP archives following the Open Package Conventions, and have a .vsix extension. Double-clicking on a .vsix will install it into Visual Studio, by op">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dragging and dropping files and folders into .vsix">
+<meta property="og:url" content="http://hmemcpy.com/2014/03/dragging-and-dropping-files-and-folders-into-vsix/index.html">
+<meta property="og:site_name" content="In Absentia">
+<meta property="og:description" content="Visual Studio Extensions, or VSIX files are simple ZIP archives following the Open Package Conventions, and have a .vsix extension. Double-clicking on a .vsix will install it into Visual Studio, by op">
+<meta property="og:image" content="http://i0.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image.png?resize=735%2C346">
+<meta property="og:image" content="http://i0.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image1.png?resize=873%2C535">
+<meta property="og:image" content="http://i2.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image2.png?resize=790%2C359">
+<meta property="og:updated_time" content="2017-03-07T10:55:26.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dragging and dropping files and folders into .vsix">
+<meta name="twitter:description" content="Visual Studio Extensions, or VSIX files are simple ZIP archives following the Open Package Conventions, and have a .vsix extension. Double-clicking on a .vsix will install it into Visual Studio, by op">
+<meta name="twitter:image" content="http://i0.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image.png?resize=735%2C346">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"remove"},
+    fancybox: false,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hmemcpy.com/2014/03/dragging-and-dropping-files-and-folders-into-vsix/"/>
+
+  <title> Dragging and dropping files and folders into .vsix | In Absentia </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70273-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Absentia</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <span class="site-subtitle">by Igal Tabachnik</span>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            Subscribe
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-twitter">
+          <a href="https://twitter.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />
+            
+            @hmemcpy
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/hmemcpy" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            GitHub
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-linkedin">
+          <a href="https://il.linkedin.com/in/igaltabachnik" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-linkedin"></i> <br />
+            
+            LinkedIn
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Dragging and dropping files and folders into .vsix
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-03-10T15:49:44+00:00" content="2014-03-10">
+              2014-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/dragging-and-dropping-files-and-folders-into-vsix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/dragging-and-dropping-files-and-folders-into-vsix/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+          
+          
+            <span class="post-edit">
+                &nbsp; | &nbsp;
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="https://github.com/hmemcpy/hmemcpy.com/edit/master/source/_posts/2014-03-10-dragging-and-dropping-files-and-folders-into-vsix.md">Edit this page</a>
+            </span>
+          
+          
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Visual Studio Extensions, or VSIX files are simple ZIP archives following the <a href="http://msdn.microsoft.com/en-us/magazine/cc163372.aspx" target="_blank" rel="external">Open Package Conventions</a>, and have a .vsix extension. Double-clicking on a .vsix will install it into Visual Studio, by opening it with VSIXInstaller.exe.</p>
+<a id="more"></a>
+<p><strong>TL;DR:</strong> IF you want to be able to drag files and folders into .vsix, there’s a registry tweak you can apply &ndash; add Windows Compressed (zipped) Folders&nbsp; drop handler’s GUID to the .vsix entry under HKCR.vsix. Create the subkeys <code>shellext\DropHandler</code>:</p>
+<pre>HKEY_CLASSES_ROOT\.vsix\shellex\DropHandler</pre>
+
+<p>Set the value of <code>(Default)</code> inside <code>DropHandler</code> to <code>{ED9D80B9-D157-457B-9192-0E7280313BF0}</code>, restart explorer.exe, and voilla! You can now drag files or folders into .vsix files, as if they were named .zip.</p>
+<p>// output:verbose</p>
+<p>I wanted to drag some files into the VSIX package, but it didn’t work &ndash; Windows has no idea that a .vsix is actually a .zip file:</p>
+<p> <img title="" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="" src="http://i0.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image.png?resize=735%2C346" data-recalc-dims="1"></p>
+<p>Dragging files and folders onto other files or folders is handled by <a href="http://www.codeproject.com/Articles/529515/NET-Shell-Extensions-Shell-Drop-Handlers" target="_blank" rel="external">Shell Drop Handlers</a> (and writing one in .NET is made incredibly simple by using <a href="https://github.com/dwmkerr/sharpshell" target="_blank" rel="external">SharpShell by Dave Kerr</a>). Instead of writing one for .vsix, I wanted to make the default one, the one that handles zip files (known as Compressed Folders in Windows), treat .vsix as .zip archives. For this, I needed to assign zip’s Drop Handler to .vsix. Since Drop Handlers are Shell Extensions based on COM, it must mean they have a GUID. And to list all Shell Extension GUIDs, we can use a nice little utility by <a href="http://www.nirsoft.net/" target="_blank" rel="external">NirSoft</a> called <a href="http://www.nirsoft.net/utils/shexview.html" target="_blank" rel="external">ShellExView</a>.</p>
+<p>Upon running ShellExView, we’ll get a listing of all the Shell Extensions installed on our system. We know Windows has one for zipped files, pressing Ctrl-F and searching for <em>˜zip’ takes us to to the <em>*Compressed (zipped) Folder DropHandler</em></em>. We need the GUID for this handler, so double-clicking on the entry opens its Properties pane, where we can copy the GUID entry.</p>
+<p><img title="" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="" src="http://i0.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image1.png?resize=873%2C535" data-recalc-dims="1"></p>
+<p>Last step is adding this GUID as a valid Drop Handler for .vsix files. Steps to do this are described in the TL;DR above.</p>
+<p>After restarting explorer.exe (or rebooting), we can now drag and drop files onto .vsix files!</p>
+<p><img title="" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="" src="http://i2.wp.com/hmemcpy.com/wp-content/uploads/2014/03/image2.png?resize=790%2C359" data-recalc-dims="1"></p>
+<p>Happy hacking!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/fworking-in-githuba-slightly-better-workflow/" rel="next" title="[FW]orking in Github - a slightly better workflow?">
+                <i class="fa fa-chevron-left"></i> [FW]orking in Github - a slightly better workflow?
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/installing-vsix-extension-via-msi-without-devenv-setup/" rel="prev" title="Installing a .vsix Extension via MSI without "devenv /setup"">
+                Installing a .vsix Extension via MSI without "devenv /setup" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2009 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Igal Tabachnik</span>
+  
+  
+    &nbsp; | &nbsp;
+    <span class="cc-license motion-element" itemprop="license">
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+        <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+      </a>
+    </span>
+  
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'hmemcpy';
+      var disqus_identifier = '2014/03/dragging-and-dropping-files-and-folders-into-vsix/';
+      var disqus_title = "Dragging and dropping files and folders into .vsix";
+      var disqus_url = 'http://hmemcpy.com/2014/03/dragging-and-dropping-files-and-folders-into-vsix/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
